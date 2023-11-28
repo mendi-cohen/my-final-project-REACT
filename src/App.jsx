@@ -1,6 +1,7 @@
 import logo from './logo.svg';
 import './App.css';
-import {TextField , Button} from '@material-ui/core/';
+import Login from './components/LoginCo';
+
 
 function App() {
   return (
@@ -12,39 +13,8 @@ function App() {
     
       <main>
 
+    <Login/>
 
-
-        <h1>  הרשמה לאתר  </h1>
-
-      <div className="login">
-      <form>
-      <TextField
-        id="username"
-        label="שם משתמש"
-        variant="outlined"
-        fullWidth
-        margin="normal"
-        color="secondary" 
-        
-  
-      />
-      <TextField
-        id="email"
-        label="כתובת אימייל"
-        type="email"
-        variant="outlined"
-        fullWidth
-        margin="normal"
-        color="secondary" 
-        
-        
-      />
-    </form>
-
-    </div>
-
-    <Button variant="contained" color="secondary" size='large' > כניסה </Button>
-    
       </main>
 
 
