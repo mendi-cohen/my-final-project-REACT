@@ -1,30 +1,27 @@
-import logo from './logo.svg';
+
 import './App.css';
-import Login from './components/LoginCo';
+import MenuAppBar from './components/AppBar';
+import EnterCard from './components/EnterCard';
+
+
+
 
 
 function App() {
   return (
     <div className="App">
-<body>
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-      </header>
-    
+      <header><MenuAppBar/></header>
       <main>
-
-    <Login/>
-
+        <EnterCard/>
       </main>
 
+   
 
 
 
 
 
-
-
-      </body>
+  
     </div>
   );
 }

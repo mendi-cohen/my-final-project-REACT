@@ -1,0 +1,11 @@
+.login {
+    display: flex;
+    flex-direction: column;
+    align-items: right;
+    gap: 16px; /* מרווח בין השדות */
+  }
+  
+  h1 {
+    text-align: center;
+    color: #f50057; /* צבע טקסט עבור הכותרת */
+  }
