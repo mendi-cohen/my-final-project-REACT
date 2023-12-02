@@ -20,14 +20,17 @@ export default function MenuAppBar() {
   const [auth, setAuth] = React.useState(false);
   const [anchorEl, setAnchorEl] = React.useState(null);
   const [userStatus, info] = React.useState("מנותק");
+  const [userColor, infoColor] = React.useState("red")
 
   const handleChange = (event) => {
     setAuth(event.target.checked);
     if (event.target.checked) {
       info("מחובר")
+      infoColor("#4caf50")
     }
     else{
     info("מנותק")
+    infoColor("red")
     }
     
   };
@@ -48,7 +51,7 @@ export default function MenuAppBar() {
   return (
     <Box sx={{ flexGrow: 1 }}>
     
-      <AppBar position="static">
+      <AppBar position="static" sx={{background: userColor}}>
         <Toolbar>
           <IconButton
             size="large"
