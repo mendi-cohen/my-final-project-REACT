@@ -14,7 +14,9 @@ function App() {
     <div className="App">
       <header><MenuAppBar/></header>
       <main>
-        <EnterCard/>
+
+        <div className="sign-in"> <EnterCard/> </div>
+
       </main>
 
    

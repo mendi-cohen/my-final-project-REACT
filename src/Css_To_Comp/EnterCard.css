@@ -1,12 +1,16 @@
-/* Style for the media-card */
-
-.media-card {
-    max-width: 350px;
-    margin: 0 auto; 
-    background-color: #a512ee; 
-    box-shadow: 0px 0px 10px rgba(18, 122, 18, 0.1);
-    border-radius: 20px; 
+.closed-card {
+    animation: slideOutToTop 1s ease-out;
   }
+
+@keyframes slideOutToTop {
+    to {
+      transform: translateY(-100%);
+      opacity: 0;
+    }
+  }
+ 
+ 
+  
   
 
   

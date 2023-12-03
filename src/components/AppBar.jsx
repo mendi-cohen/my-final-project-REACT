@@ -26,7 +26,7 @@ export default function MenuAppBar() {
     setAuth(event.target.checked);
     if (event.target.checked) {
       info("מחובר")
-      infoColor("#4caf50")
+      infoColor("white")
     }
     else{
     info("מנותק")
@@ -51,7 +51,7 @@ export default function MenuAppBar() {
   return (
     <Box sx={{ flexGrow: 1 }}>
     
-      <AppBar position="static" sx={{background: userColor}}>
+      <AppBar position="static" sx={{color: userColor , background:'#4caf50'} }>
         <Toolbar>
           <IconButton
             size="large"
@@ -62,7 +62,7 @@ export default function MenuAppBar() {
           >
             <MenuIcon/>
           </IconButton>
-          <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
+          <Typography variant="h5" component="div" sx={{ flexGrow: 1 }}>
           תפריט ראשי   
            מצב : {userStatus}
           </Typography>

@@ -1,10 +1,6 @@
-// Login.js
-
 import React from 'react';
-import { TextField, Button, ThemeProvider, createTheme , Typography } from '@material-ui/core/';
-import '../Css_To_Comp/Login.css';
-
-// קומפוננטת הרישום בפועל
+import { TextField, Button, ThemeProvider, createTheme, Typography } from '@material-ui/core/';
+import '../Css_To_Comp/SignIn.css';
 
 const theme = createTheme({
   palette: {
@@ -12,14 +8,19 @@ const theme = createTheme({
       main: '#4caf50',
     },
   },
+  typography: {
+    fontFamily: ['Noto Sans Hebrew', 'sans-serif'].join(','), // כמו שהיה גם במקום הקודם
+  },
 });
 
-function Login() {
+function SignIn() {
   return (
     <ThemeProvider theme={theme}>
       <>
-       
         <div className="login">
+        <Typography color='primary'>
+        <h1> !שלום </h1>
+        </Typography>
           <form>
             <TextField
               id="username"
@@ -37,19 +38,20 @@ function Login() {
               fullWidth
               margin="none"
               color="primary"
-               
             />
           </form>
         </div>
         <div>
-          <Button variant="contained" color="primary" size="large">
-          <Typography variant="h6" className='normal-weight'>הירשם!</Typography>
-          </Button>
+         
+            <Button variant="contained" color="primary" size="large">
+             !הירשם
+            </Button>
           
         </div>
       </>
-    </ThemeProvider>
+      </ThemeProvider>
+    
   );
 }
 
-export default Login;
+export default SignIn;
