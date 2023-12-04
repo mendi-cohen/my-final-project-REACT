@@ -6,6 +6,7 @@ main{
   display: flex;
   flex-direction: row-reverse ;
   align-items: center;
+
  
 }
 body{
@@ -24,4 +25,12 @@ body{
  100% {
     transform: translateY(0);
   }
+}
+footer{
+  height: 100px;
+}
+.enter-Button{
+  width: 20%;
+  height: 70px;
+ 
 }

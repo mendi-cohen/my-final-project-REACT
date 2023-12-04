@@ -4,7 +4,6 @@ import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import IconButton from '@mui/material/IconButton';
-import MenuIcon from '@mui/icons-material/Menu';
 import AccountCircle from '@mui/icons-material/AccountCircle';
 import Switch from '@mui/material/Switch';
 import FormControlLabel from '@mui/material/FormControlLabel';
@@ -60,7 +59,7 @@ export default function MenuAppBar() {
             aria-label="menu"
             sx={{ mr: 2 }}
           >
-            <MenuIcon/>
+           
           </IconButton>
           <Typography variant="h5" component="div" sx={{ flexGrow: 1 }}>
           תפריט ראשי   
