@@ -17,12 +17,12 @@ function HeadOfPage(){
 
 
   return(
-    <ThemeProvider theme={theme}>
-            <Typography >
-              <div className="textofheader"> <h1>  ברוכים הבאים לאתר הרבנות יד רמב"ם </h1>  </div>
-              </Typography>
+<ThemeProvider theme={theme}>
+  <Typography variant="h3" className="textofheader">
+    ברוכים הבאים לאתר הרבנות יד רמב"ם
+  </Typography>
+</ThemeProvider>
 
-    </ThemeProvider>
 
   )
 
