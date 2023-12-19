@@ -2,7 +2,7 @@
 .textofheader {
     position: relative;
     color: #4caf50;
-    font-size: 20px; /* גודל הטקסט */
+    font-size: 20px; 
     display: inline-block;
   }
   
@@ -11,10 +11,10 @@
     position: absolute;
     top: 50%;
     left: 50%;
-    width: 120%; /* רוחב של העיגול */
-    height: 120%; /* גובה של העיגול */
-    background-color: #fff; /* צבע הרקע של העיגול */
-    border-radius: 40%; /* יצירת צורת עיגול */
+    width: 120%; 
+    height: 120%; 
+    background-color: #fff; 
+    border-radius: 10%; /* יצירת צורת עיגול */
     transform: translate(-50%, -50%); /* להניע את העיגול למקום תחילתי עם translate */
     z-index: -1; /* שהעיגול יהיה מאחורי הטקסט */
   }

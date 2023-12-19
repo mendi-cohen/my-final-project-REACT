@@ -6,7 +6,7 @@ main{
   display: flex;
   flex-direction: row-reverse ;
   align-items: center;
-  height: 300px;
+  height: 340px;
 
  
 }

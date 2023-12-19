@@ -23,7 +23,7 @@ function App() {
       <footer>
         <Typography >
       <Button className='enter-Button' variant="contained" color="primary" size="large" startIcon={<ExitToAppIcon />} 
-      sx={{backgroundColor : 'rgb(33, 187, 130)', fontSize:"36px", borderRadius:'30%'}}>
+      sx={{backgroundColor : 'rgb(33, 187, 130)', fontSize:"36px", borderRadius:'50% 5%',}}>
              כניסה 
             </Button>
             </Typography>
