@@ -30,9 +30,6 @@ export default function MenuAppBar(props) {
     else console.log("User is not signed in!");
   }, [props.isSignInSuccessful]);
 
-
-  
-
   const handleChange = (event) => {
     setAuth(event.target.checked);
     if (event.target.checked) {

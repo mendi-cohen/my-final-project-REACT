@@ -26,7 +26,7 @@ export default function EnterCard(props) {
               <CloseIcon />
             </IconButton>
           <CardContent>
-            <SignIn onSuccess = {props.yes} />
+            <SignIn onSuccess = {props.yesIsSign_In} />
           </CardContent>
           <CardActions>
             

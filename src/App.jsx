@@ -30,7 +30,7 @@ function App() {
       <header><MenuAppBar isSignInSuccessful = {isSignInSuccessful}/></header>
       <HeadOfPage/>
 
-      <main><div className="sign-in"> <EnterCard yes = {Success}/> </div></main>
+      <main><div className="sign-in"> <EnterCard yesIsSign_In = {Success}/> </div></main>
 
       <footer>
         <Typography >
