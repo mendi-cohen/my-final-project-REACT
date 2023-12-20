@@ -8,12 +8,14 @@ import CloseIcon from '@mui/icons-material/Close';
 
 import SignIn from './SignIn';
 
-export default function EnterCard() {
+export default function EnterCard(props) {
   const [isCardOpen, setIsCardOpen] = useState(true);
 
   const handleCloseCard = () => {
     setIsCardOpen(false);
   };
+
+
 
   return (
     <>
@@ -24,7 +26,7 @@ export default function EnterCard() {
               <CloseIcon />
             </IconButton>
           <CardContent>
-            <SignIn />
+            <SignIn onSuccess = {props.yes} />
           </CardContent>
           <CardActions>
             

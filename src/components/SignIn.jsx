@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
+import React, { useState} from 'react';
 import { TextField, Button, ThemeProvider, createTheme, Typography } from '@material-ui/core/';
-import { Alert as MuiAlert } from '@mui/lab';
+import { Alert as MuiAlert } from '@mui/material';
 import { Snackbar } from '@mui/material';
 
 const theme = createTheme({
@@ -14,14 +14,16 @@ const theme = createTheme({
   },
 });
 
-function SignIn() {
+function SignIn(props) {
   const [userName, setUsername] = useState('');
   const [email, setEmail] = useState('');
   const [openSuccess, setOpenSuccess] = useState(false);
   const [openError, setOpenError] = useState(false);
+ 
 
   const handleSuccessClose = () => {
     setOpenSuccess(false);
+   
   };
 
   const handleErrorClose = () => {
@@ -42,9 +44,10 @@ function SignIn() {
 
       if (response.ok) {
         setOpenSuccess(true);
-        setUsername(''); 
-        setEmail(''); 
-        
+        setUsername('');
+        setEmail('');
+         props.onSuccess();
+
       } else {
         setOpenError(true);
       }
@@ -53,13 +56,15 @@ function SignIn() {
     }
   };
 
+
+
   return (
     <ThemeProvider theme={theme}>
       <>
         <div className="login">
           <Typography color="primary" variant="h6">
-            שלום לך גולש יקר 
-            <br/>
+            שלום לך גולש יקר
+            <br />
             הרשם כדי לבצע פעולות
           </Typography>
 
@@ -91,13 +96,23 @@ function SignIn() {
           </form>
         </div>
 
-        <Snackbar open={openSuccess} autoHideDuration={6000} onClose={handleSuccessClose} anchorOrigin={{ vertical: 'top', horizontal: 'center' }}>
+        <Snackbar
+          open={openSuccess}
+          autoHideDuration={6000}
+          onClose={handleSuccessClose}
+          anchorOrigin={{ vertical: 'top', horizontal: 'center' }}
+        >
           <MuiAlert elevation={6} variant="filled" severity="success" onClose={handleSuccessClose}>
             הרשמה בוצעה בהצלחה!
           </MuiAlert>
         </Snackbar>
 
-        <Snackbar open={openError} autoHideDuration={6000} onClose={handleErrorClose} anchorOrigin={{ vertical: 'top', horizontal: 'center' }}>
+        <Snackbar
+          open={openError}
+          autoHideDuration={6000}
+          onClose={handleErrorClose}
+          anchorOrigin={{ vertical: 'top', horizontal: 'center' }}
+        >
           <MuiAlert elevation={6} variant="filled" severity="error" onClose={handleErrorClose}>
             שגיאה בהרשמה. אנא נסה שוב.
           </MuiAlert>

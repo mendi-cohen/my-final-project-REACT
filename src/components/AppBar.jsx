@@ -14,12 +14,24 @@ import Menu from '@mui/material/Menu';
 
 //קומפוננטת ראש דף הכניסה
 
-export default function MenuAppBar() {
+export default function MenuAppBar(props) {
 
   const [auth, setAuth] = React.useState(false);
   const [anchorEl, setAnchorEl] = React.useState(null);
   const [userStatus, info] = React.useState("מנותק");
   const [userColor, infoColor] = React.useState("red")
+
+  React.useEffect(() => {
+    if (props.isSignInSuccessful) {
+      info("מחובר")
+      infoColor("white")
+      setAuth(true);
+    }
+    else console.log("User is not signed in!");
+  }, [props.isSignInSuccessful]);
+
+
+  
 
   const handleChange = (event) => {
     setAuth(event.target.checked);
