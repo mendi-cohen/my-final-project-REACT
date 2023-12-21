@@ -7,6 +7,8 @@ import HeadOfPage from './components/HeadrOFPage'
 import { Button , Typography } from '@mui/material';
 import ExitToAppIcon from '@mui/icons-material/ExitToApp';
 import { useState } from 'react';
+import SignIn from './components/SignIn';
+
 
 
 
@@ -30,7 +32,7 @@ function App() {
       <header><MenuAppBar isSignInSuccessful = {isSignInSuccessful}/></header>
       <HeadOfPage/>
 
-      <main><div className="sign-in"> <EnterCard yesIsSign_In = {Success}/> </div></main>
+      <main><div className="sign-in"> <EnterCard sign_Or_Login_Comp = {<SignIn onSuccess = {Success}/>}/> </div></main>
 
       <footer>
         <Typography >
@@ -41,6 +43,7 @@ function App() {
             </Typography>
       </footer>
    
+  
 
 
 

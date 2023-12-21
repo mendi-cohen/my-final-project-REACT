@@ -61,7 +61,7 @@ function SignIn(props) {
   return (
     <ThemeProvider theme={theme}>
       <>
-        <div className="login">
+        <div className="signIn">
           <Typography color="primary" variant="h6">
             שלום לך גולש יקר
             <br />

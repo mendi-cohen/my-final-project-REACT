@@ -10,6 +10,8 @@ import FormControlLabel from '@mui/material/FormControlLabel';
 import FormGroup from '@mui/material/FormGroup';
 import MenuItem from '@mui/material/MenuItem';
 import Menu from '@mui/material/Menu';
+// import EnterCard from './EnterCard'
+// import LogIn from './LogIn'
 
 
 //קומפוננטת ראש דף הכניסה
@@ -29,6 +31,17 @@ export default function MenuAppBar(props) {
     }
     else console.log("User is not signed in!");
   }, [props.isSignInSuccessful]);
+
+  // const openLgin = ()=>{
+
+  //   return(
+  //     <>
+  //     <div>
+  //       <EnterCard sign_Or_Login_Comp = {<LogIn/>}/>
+  //     </div>
+  //     </>
+  //   )
+  // }
 
   const handleChange = (event) => {
     setAuth(event.target.checked);
@@ -50,9 +63,6 @@ export default function MenuAppBar(props) {
 
   const handleClose = () => {
     setAnchorEl(null);
-  
-
-
   };
  
 
@@ -71,7 +81,8 @@ export default function MenuAppBar(props) {
            
           </IconButton>
           <Typography variant="h5" component="div" sx={{ flexGrow: 1 }}>
-          תפריט ראשי   
+          תפריט ראשי  
+          
            מצב : {userStatus}
           </Typography>
           {auth && (
