@@ -39,7 +39,7 @@ function LogIn(){
     
         try {
           const encodedEmail = encodeURIComponent(email);
-          const response = await fetch(`http://localhost:3003/findByEmail?email=${encodedEmail}`, {
+          const response = await fetch(`http://localhost:3003/login?email=${encodedEmail}`, {
             method: 'GET',
             headers: {
               'Content-Type': 'application/json',
