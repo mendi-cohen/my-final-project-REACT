@@ -10,8 +10,8 @@ import FormControlLabel from '@mui/material/FormControlLabel';
 import FormGroup from '@mui/material/FormGroup';
 import MenuItem from '@mui/material/MenuItem';
 import Menu from '@mui/material/Menu';
-// import EnterCard from './EnterCard'
-// import LogIn from './LogIn'
+import EnterCard from './EnterCard_Comp';
+import Login from './Login_Comp';
 
 
 //קומפוננטת ראש דף הכניסה
@@ -21,7 +21,9 @@ export default function MenuAppBar(props) {
   const [auth, setAuth] = React.useState(false);
   const [anchorEl, setAnchorEl] = React.useState(null);
   const [userStatus, info] = React.useState("מנותק");
-  const [userColor, infoColor] = React.useState("red")
+  const [userColor, infoColor] = React.useState("red");
+  const [login , showLogin] = React.useState(false);
+  const [loginSuccess , setloginSuccess] = React.useState(false);
 
   React.useEffect(() => {
     if (props.isSignInSuccessful) {
@@ -32,27 +34,28 @@ export default function MenuAppBar(props) {
     else console.log("User is not signed in!");
   }, [props.isSignInSuccessful]);
 
-  // const openLgin = ()=>{
 
-  //   return(
-  //     <>
-  //     <div>
-  //       <EnterCard sign_Or_Login_Comp = {<LogIn/>}/>
-  //     </div>
-  //     </>
-  //   )
-  // }
+
+  function Success_Login(){
+    console.log("yes the Log-in was successful");
+    setloginSuccess(true)
+    setAuth(true);
+  }
+
+
+
 
   const handleChange = (event) => {
+    showLogin(true);
+    if (loginSuccess) { 
     setAuth(event.target.checked);
-    if (event.target.checked) {
       info("מחובר")
       infoColor("white")
     }
-    else{
+   else 
     info("מנותק")
     infoColor("red")
-    }
+    
     
   };
 
@@ -68,6 +71,8 @@ export default function MenuAppBar(props) {
 
   return (
     <Box sx={{ flexGrow: 1 }}>
+
+
     
       <AppBar position="static" sx={{color: userColor , background:'#4caf50'} }>
         <Toolbar>
@@ -92,7 +97,7 @@ export default function MenuAppBar(props) {
                 aria-label="account of current user"
                 aria-controls="menu-appbar"
                 aria-haspopup="true"
-                onClick={handleMenu}
+                onClick= {handleMenu}
                 color="inherit"
               >
                 <AccountCircle />
@@ -131,6 +136,10 @@ export default function MenuAppBar(props) {
           label={auth ? 'התנתק' : 'התחבר'}
         />
       </FormGroup>
+      {login ? 
+      <EnterCard sign_Or_Login_Comp={<Login onSuccess = {Success_Login} />} />
+      :  null
+     }
     </Box>
   );
 }

@@ -18,7 +18,7 @@ const theme = createTheme({
   });
 
 
-function LogIn(){
+function Login(props){
 
       const [email, setEmail] = useState('');
       const [openSuccess, setOpenSuccess] = useState(false);
@@ -49,6 +49,7 @@ function LogIn(){
           if (response.ok) {
             setOpenSuccess(true);
             setEmail('');
+            props.onSuccess();
          
     
           } else {
@@ -122,4 +123,4 @@ return (
 
 }
 
-export default LogIn
+export default Login
