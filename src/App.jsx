@@ -1,6 +1,6 @@
 //css
 import './App.css';
-import './Css_To_Comp/EnterCard.css';
+import './Css/EnterCard.css';
 
 //comps and modules
 
@@ -11,7 +11,7 @@ import { Button , Typography } from '@mui/material';
 import ExitToAppIcon from '@mui/icons-material/ExitToApp';
 import { useState } from 'react';
 import SignIn from './components/SignIn_Comp';
-import Login from './components/Login_Comp';
+
 
 
 
@@ -22,30 +22,22 @@ import Login from './components/Login_Comp';
 
 function App() {
 
-  const [SignIn_Or_LogIn_Successful, setSignIn_Or_LogIn_Successful] = useState(false);
+  const [SignIn_Successful, setSignIn_Successful] = useState(false);
 
 
     function Success_Signin(){
     console.log("yes the sign-in was successful");
-    setSignIn_Or_LogIn_Successful(true);
-    
+    setSignIn_Successful(true);
   }
-    function Success_Login(){
-    console.log("yes the Log-in was successful");
-    setSignIn_Or_LogIn_Successful(true);
-    
-  }
+
 
 
   return (
     <div className="App">
-      <header><MenuAppBar isSignInSuccessful = {SignIn_Or_LogIn_Successful}/></header>
+      <header><MenuAppBar isSignInSuccessful = {SignIn_Successful}/></header>
       <HeadOfPage/>
 
       <main><div className="sign-in"> <EnterCard sign_Or_Login_Comp = {<SignIn onSuccess = {Success_Signin}/>}/> </div>
-     <div className='log-in'>
-      <EnterCard sign_Or_Login_Comp = {<Login onSuccess = {Success_Login}/>}/>
-     </div>
       </main>
       <footer>
        

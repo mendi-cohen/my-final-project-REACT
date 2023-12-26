@@ -49,7 +49,8 @@ function Login(props){
           if (response.ok) {
             setOpenSuccess(true);
             setEmail('');
-            props.onSuccess();
+            props.onSuccess(email);
+          
          
     
           } else {

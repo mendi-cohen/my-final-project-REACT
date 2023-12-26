@@ -1,4 +1,5 @@
 import * as React from 'react';
+import '../Css/AppBar.css'
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
@@ -12,6 +13,10 @@ import MenuItem from '@mui/material/MenuItem';
 import Menu from '@mui/material/Menu';
 import EnterCard from './EnterCard_Comp';
 import Login from './Login_Comp';
+import { Alert as MuiAlert } from '@mui/material';
+import { Snackbar } from '@mui/material';
+
+
 
 
 //קומפוננטת ראש דף הכניסה
@@ -21,9 +26,15 @@ export default function MenuAppBar(props) {
   const [auth, setAuth] = React.useState(false);
   const [anchorEl, setAnchorEl] = React.useState(null);
   const [userStatus, info] = React.useState("מנותק");
-  const [userColor, infoColor] = React.useState("red");
+  const [userColor, infoColor] = React.useState("indianred");
   const [login , showLogin] = React.useState(false);
   const [loginSuccess , setloginSuccess] = React.useState(false);
+  const [openSuccess, setOpenSuccess] =React.useState(false);
+  const [openError, setOpenError] = React.useState(false);
+  
+
+
+
 
   React.useEffect(() => {
     if (props.isSignInSuccessful) {
@@ -34,30 +45,70 @@ export default function MenuAppBar(props) {
     else console.log("User is not signed in!");
   }, [props.isSignInSuccessful]);
 
-
-
-  function Success_Login(){
-    console.log("yes the Log-in was successful");
-    setloginSuccess(true)
-    setAuth(true);
-  }
-
-
-
-
-  const handleChange = (event) => {
-    showLogin(true);
-    if (loginSuccess) { 
-    setAuth(event.target.checked);
-      info("מחובר")
-      infoColor("white")
-    }
-   else 
-    info("מנותק")
-    infoColor("red")
-    
-    
+  const handleSuccessClose = () => {
+    setOpenSuccess(false);
+   
   };
+
+  const handleErrorClose = () => {
+    setOpenError(false);
+  };
+
+
+  function Success_Login(email) {
+    console.log("yes the Log-in was successful");
+    setloginSuccess(true);
+    setAuth(true);
+    info("מחובר");
+    infoColor("white");
+    console.log("User email:", email);
+    return email;
+  }
+  
+ const handleSwich = async (e) => {
+  const user_email = Success_Login(props.email);
+  try {
+    const response = await fetch(`http://localhost:3003/dislogin/${user_email}`, {
+      method: 'DELETE',
+    });
+    
+
+    if (response.ok) {
+      setOpenSuccess(true);
+    } else {
+      setOpenError(true);
+    }
+  } catch (error) {
+    setOpenError(true);
+  }
+};
+
+  
+
+
+///
+
+
+const handleChange = (event) => {
+  showLogin(true);
+  if (loginSuccess) { 
+    setAuth(event.target.checked);
+    if (event.target.checked) {
+      info("מחובר");
+      infoColor("white");
+    } else {
+      info("מנותק");
+      infoColor("indianred");
+      setloginSuccess(false);
+      handleSwich();
+
+    }
+  } else {
+    info("מנותק");
+    infoColor("indianred");
+  }
+};
+
 
   const handleMenu = (event) => {
     setAnchorEl(event.currentTarget);
@@ -70,6 +121,7 @@ export default function MenuAppBar(props) {
  
 
   return (
+    <>
     <Box sx={{ flexGrow: 1 }}>
 
 
@@ -137,9 +189,36 @@ export default function MenuAppBar(props) {
         />
       </FormGroup>
       {login ? 
-      <EnterCard sign_Or_Login_Comp={<Login onSuccess = {Success_Login} />} />
+      <div className="log-in"><EnterCard sign_Or_Login_Comp={<Login onSuccess={(email) => Success_Login(email)} />} />
+      </div>
       :  null
      }
+
+     
     </Box>
+
+<Snackbar
+open={openSuccess}
+autoHideDuration={6000}
+onClose={handleSuccessClose}
+anchorOrigin={{ vertical: 'top', horizontal: 'center' }}
+>
+<MuiAlert elevation={6} variant="filled" severity="success" onClose={handleSuccessClose}>
+  הרשמה בוצעה בהצלחה!
+</MuiAlert>
+</Snackbar>
+
+<Snackbar
+open={openError}
+autoHideDuration={6000}
+onClose={handleErrorClose}
+anchorOrigin={{ vertical: 'top', horizontal: 'center' }}
+>
+<MuiAlert elevation={6} variant="filled" severity="error" onClose={handleErrorClose}>
+  שגיאה בהרשמה. אנא נסה שוב.
+</MuiAlert>
+</Snackbar>
+</>
   );
+  
 }

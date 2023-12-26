@@ -1,5 +1,5 @@
 import { Typography , createTheme,ThemeProvider } from '@mui/material';
-import '../Css_To_Comp/HeadOfPage.css'
+import '../Css/HeadOfPage.css'
 
 const theme = createTheme({
     palette: {
