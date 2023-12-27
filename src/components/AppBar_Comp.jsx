@@ -31,6 +31,7 @@ export default function MenuAppBar(props) {
   const [loginSuccess , setloginSuccess] = React.useState(false);
   const [openSuccess, setOpenSuccess] =React.useState(false);
   const [openError, setOpenError] = React.useState(false);
+  const [emailFromLogin, setEmailFromLogin] = React.useState("");
   
 
 
@@ -62,52 +63,50 @@ export default function MenuAppBar(props) {
     info("מחובר");
     infoColor("white");
     console.log("User email:", email);
+    setEmailFromLogin(email);
     return email;
   }
-  
- const handleSwich = async (e) => {
-  const user_email = Success_Login(props.email);
-  try {
-    const response = await fetch(`http://localhost:3003/dislogin/${user_email}`, {
-      method: 'DELETE',
-    });
-    
 
-    if (response.ok) {
-      setOpenSuccess(true);
-    } else {
+
+  const handleSwich = async (email) => {
+    try {
+      const response = await fetch(`http://localhost:3003/dislogin/${email}`, {
+        method: 'DELETE',
+      });
+  
+      if (response.ok) {
+        console.log(email);
+        setOpenSuccess(true);
+        setloginSuccess(false);
+        showLogin(false);
+        setAuth(false);
+        info('מנותק');
+        infoColor("indianred");
+      } else {
+        setOpenError(true);
+      }
+    } catch (error) {
       setOpenError(true);
     }
-  } catch (error) {
-    setOpenError(true);
-  }
-};
-
+  };
   
 
 
-///
-
-
-const handleChange = (event) => {
-  showLogin(true);
-  if (loginSuccess) { 
-    setAuth(event.target.checked);
-    if (event.target.checked) {
-      info("מחובר");
-      infoColor("white");
-    } else {
-      info("מנותק");
-      infoColor("indianred");
-      setloginSuccess(false);
-      handleSwich();
-
+  const handleChange = (event) => {
+    if (!loginSuccess) {
+      showLogin(true);
     }
-  } else {
-    info("מנותק");
-    infoColor("indianred");
-  }
-};
+    if (loginSuccess) {
+      console.log('Calling handleSwich with email:', emailFromLogin);
+      handleSwich(emailFromLogin);
+    }
+  };
+  
+
+
+
+
+
 
 
   const handleMenu = (event) => {
