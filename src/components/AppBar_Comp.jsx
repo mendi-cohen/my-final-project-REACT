@@ -62,6 +62,7 @@ export default function MenuAppBar(props) {
     setAuth(true);
     info("מחובר");
     infoColor("white");
+    showLogin(false);
     console.log("User email:", email);
     setEmailFromLogin(email);
     return email;
