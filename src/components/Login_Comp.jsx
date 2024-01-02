@@ -3,6 +3,7 @@ import { TextField, Button, ThemeProvider, createTheme, Typography } from '@mate
 import { Alert as MuiAlert } from '@mui/material';
 import { Snackbar } from '@mui/material';
 import { useState } from "react";
+// import { useNavigate } from "react-router-dom";
 
 
 
@@ -23,10 +24,12 @@ function Login(props){
       const [email, setEmail] = useState('');
       const [openSuccess, setOpenSuccess] = useState(false);
       const [openError, setOpenError] = useState(false);
-     
+      // const navigate = useNavigate();
+
     
       const handleSuccessClose = () => {
         setOpenSuccess(false);
+        
        
       };
     
@@ -48,9 +51,10 @@ function Login(props){
     
           if (response.ok) {
             setOpenSuccess(true);
+
             setEmail('');
             props.onSuccess(email);
-          
+            // navigate('/contact')
          
     
           } else {

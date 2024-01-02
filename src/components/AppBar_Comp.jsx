@@ -1,5 +1,4 @@
 import * as React from 'react';
-import '../Css/AppBar.css'
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
@@ -39,15 +38,14 @@ export default function MenuAppBar(props) {
 
   React.useEffect(() => {
     if (props.isSignInSuccessful) {
-      info("מחובר")
-      infoColor("white")
-      setAuth(true);
+      setOpenSuccess(true);
     }
     else console.log("User is not signed in!");
   }, [props.isSignInSuccessful]);
 
   const handleSuccessClose = () => {
     setOpenSuccess(false);
+    
    
   };
 
@@ -59,6 +57,7 @@ export default function MenuAppBar(props) {
   function Success_Login(email) {
     console.log("yes the Log-in was successful");
     setloginSuccess(true);
+    setOpenSuccess(true);
     setAuth(true);
     info("מחובר");
     infoColor("white");
@@ -71,18 +70,20 @@ export default function MenuAppBar(props) {
 
   const handleSwich = async (email) => {
     try {
-      const response = await fetch(`http://localhost:3003/dislogin/${email}`, {
+      const response = await fetch(`http://localhost:3003/loginOff/${email}`, {
         method: 'DELETE',
       });
   
       if (response.ok) {
         console.log(email);
-        setOpenSuccess(true);
+       
         setloginSuccess(false);
         showLogin(false);
         setAuth(false);
         info('מנותק');
         infoColor("indianred");
+        setOpenError(true);
+       
       } else {
         setOpenError(true);
       }
@@ -189,7 +190,7 @@ export default function MenuAppBar(props) {
         />
       </FormGroup>
       {login ? 
-      <div className="log-in"><EnterCard sign_Or_Login_Comp={<Login onSuccess={(email) => Success_Login(email)} />} />
+      <div className="log-in"><EnterCard sign_Or_Login_Comp={<Login onSuccess={(email) => Success_Login(email)} />} restartLog = {showLogin} />
       </div>
       :  null
      }
@@ -204,7 +205,7 @@ onClose={handleSuccessClose}
 anchorOrigin={{ vertical: 'top', horizontal: 'center' }}
 >
 <MuiAlert elevation={6} variant="filled" severity="success" onClose={handleSuccessClose}>
-  הרשמה בוצעה בהצלחה!
+ ! התחברות בוצעה בהצלחה
 </MuiAlert>
 </Snackbar>
 
@@ -215,7 +216,7 @@ onClose={handleErrorClose}
 anchorOrigin={{ vertical: 'top', horizontal: 'center' }}
 >
 <MuiAlert elevation={6} variant="filled" severity="error" onClose={handleErrorClose}>
-  שגיאה בהרשמה. אנא נסה שוב.
+   התנתקת מהחשבון ! 
 </MuiAlert>
 </Snackbar>
 </>

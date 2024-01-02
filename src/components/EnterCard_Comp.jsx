@@ -12,6 +12,7 @@ export default function EnterCard(props) {
 
   const handleCloseCard = () => {
     setIsCardOpen(false);
+    props.restartLog();  
   };
   
 
