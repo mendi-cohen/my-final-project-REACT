@@ -46,8 +46,7 @@ function SignIn(props) {
         setOpenSuccess(true);
         setUsername('');
         setEmail('');
-         props.onSuccess();
-
+        
       } else {
         setOpenError(true);
       }

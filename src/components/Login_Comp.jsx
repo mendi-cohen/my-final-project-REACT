@@ -39,7 +39,7 @@ function Login(props){
 
       const handleSubmit = async (e) => {
         e.preventDefault();
-    
+      
         try {
           const encodedEmail = encodeURIComponent(email);
           const response = await fetch(`http://localhost:3003/login?email=${encodedEmail}`, {
@@ -48,16 +48,12 @@ function Login(props){
               'Content-Type': 'application/json',
             },
           });
-    
+      
           if (response.ok) {
+            const { name } = await response.json(); 
             setOpenSuccess(true);
-
             setEmail('');
-            props.onSuccess(email);
-            // navigate('/contact')
-         
-    
-          } else {
+            props.onSuccess(email, name); 
             setOpenError(true);
           }
         } catch (error) {

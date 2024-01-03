@@ -22,7 +22,7 @@ import { Snackbar } from '@mui/material';
 
 export default function MenuAppBar(props) {
 
-  const [auth, setAuth] = React.useState(false);
+  const [auth, setAuth] = React.useState(true);
   const [anchorEl, setAnchorEl] = React.useState(null);
   const [userStatus, info] = React.useState("מנותק");
   const [userColor, infoColor] = React.useState("indianred");
@@ -31,30 +31,34 @@ export default function MenuAppBar(props) {
   const [openSuccess, setOpenSuccess] =React.useState(false);
   const [openError, setOpenError] = React.useState(false);
   const [emailFromLogin, setEmailFromLogin] = React.useState("");
+  const [userName, setUserName] = React.useState("");
+  const [profile , setProfile] = React.useState(false)
+
   
-
-
-
-
-  React.useEffect(() => {
-    if (props.isSignInSuccessful) {
-      setOpenSuccess(true);
-    }
-    else console.log("User is not signed in!");
-  }, [props.isSignInSuccessful]);
 
   const handleSuccessClose = () => {
     setOpenSuccess(false);
-    
-   
   };
-
   const handleErrorClose = () => {
     setOpenError(false);
   };
 
+      // התחברות המשתמש 
+  
+      const handleChange = (event) => {
+        if (!loginSuccess) {
+          showLogin(true);
+        }
+        if (loginSuccess) {
+          console.log('Calling handleSwich with email:', emailFromLogin);
+          handleSwich(emailFromLogin);
+        }
+      };
 
-  function Success_Login(email) {
+
+  // אישור ההתחברות 
+
+  function Success_Login(email, name) {
     console.log("yes the Log-in was successful");
     setloginSuccess(true);
     setOpenSuccess(true);
@@ -63,10 +67,12 @@ export default function MenuAppBar(props) {
     infoColor("white");
     showLogin(false);
     console.log("User email:", email);
+    console.log("username:", name);
     setEmailFromLogin(email);
-    return email;
+    setUserName(`! ${name} שלום לך  `); 
   }
-
+  
+ // מחיקת משתמש מחובר 
 
   const handleSwich = async (email) => {
     try {
@@ -91,31 +97,13 @@ export default function MenuAppBar(props) {
       setOpenError(true);
     }
   };
+
+
   
-
-
-  const handleChange = (event) => {
-    if (!loginSuccess) {
-      showLogin(true);
-    }
-    if (loginSuccess) {
-      console.log('Calling handleSwich with email:', emailFromLogin);
-      handleSwich(emailFromLogin);
-    }
-  };
-  
-
-
-
-
-
-
-
   const handleMenu = (event) => {
     setAnchorEl(event.currentTarget);
    
   };
-
   const handleClose = () => {
     setAnchorEl(null);
   };
@@ -124,37 +112,40 @@ export default function MenuAppBar(props) {
   return (
     <>
     <Box sx={{ flexGrow: 1 }}>
-
-
     
       <AppBar position="static" sx={{color: userColor , background:'#4caf50'} }>
         <Toolbar>
-          <IconButton
-            size="large"
-            edge="start"
-            color="inherit"
-            aria-label="menu"
-            sx={{ mr: 2 }}
-          >
-           
-          </IconButton>
-          <Typography variant="h5" component="div" sx={{ flexGrow: 1 }}>
-          תפריט ראשי  
+        <FormGroup>
+        <FormControlLabel
+          control={
+            <Switch
+              checked={auth}
+              onChange={handleChange}
+              aria-label="login switch"
+            />
+          }
+          label={auth ? 'התנתק' : 'התחבר'}
+        />
+      </FormGroup>
+      <Typography variant="h5" component="div" sx={{ flexGrow: 1 }}> 
+  {auth ? userName :` מצב:  ${userStatus}`} 
+</Typography>
           
-           מצב : {userStatus}
-          </Typography>
           {auth && (
             <div>
+             
               <IconButton
-                size="large"
+                size="small"
                 aria-label="account of current user"
                 aria-controls="menu-appbar"
                 aria-haspopup="true"
                 onClick= {handleMenu}
                 color="inherit"
               >
+                <div>{emailFromLogin}</div>
                 <AccountCircle />
               </IconButton>
+              
               <Menu
                 id="menu-appbar"
                 anchorEl={anchorEl}
@@ -171,26 +162,15 @@ export default function MenuAppBar(props) {
                 onClose={handleClose}
               >
                 <MenuItem onClick={handleClose}>פרופיל</MenuItem>
-                <MenuItem onClick={handleClose}>החשבון שלי </MenuItem>
               </Menu>
+             
             </div>
           )}
         </Toolbar>
       </AppBar>
-      <FormGroup>
-        <FormControlLabel
-          control={
-            <Switch
-              checked={auth}
-              onChange={handleChange}
-              aria-label="login switch"
-            />
-          }
-          label={auth ? 'התנתק' : 'התחבר'}
-        />
-      </FormGroup>
+   
       {login ? 
-      <div className="log-in"><EnterCard sign_Or_Login_Comp={<Login onSuccess={(email) => Success_Login(email)} />} restartLog = {showLogin} />
+      <div className="log-in"><EnterCard sign_Or_Login_Comp={<Login onSuccess={(email , name) => Success_Login(email , name)} />} restartLog = {showLogin} />
       </div>
       :  null
      }
