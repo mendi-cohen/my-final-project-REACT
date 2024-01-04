@@ -50,17 +50,20 @@ function Login(props){
           });
       
           if (response.ok) {
-            const { name } = await response.json(); 
+            const data = await response.json();
+            const { loginName } = data; 
+            console.log('Name from response:', loginName);
             setOpenSuccess(true);
             setEmail('');
-            props.onSuccess(email, name); 
-            setOpenError(true);
+            props.onSuccess(email, loginName);
           }
+            else 
+            setOpenError(true);  
+          
         } catch (error) {
           setOpenError(true);
         }
       };
-
 
 return (
     <>

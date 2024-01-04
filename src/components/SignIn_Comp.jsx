@@ -1,7 +1,8 @@
-import React, { useState} from 'react';
+import React, { useState } from 'react';
 import { TextField, Button, ThemeProvider, createTheme, Typography } from '@material-ui/core/';
 import { Alert as MuiAlert } from '@mui/material';
 import { Snackbar } from '@mui/material';
+import '../Css/Home.css'
 
 const theme = createTheme({
   palette: {
@@ -19,22 +20,18 @@ function SignIn(props) {
   const [email, setEmail] = useState('');
   const [openSuccess, setOpenSuccess] = useState(false);
   const [openError, setOpenError] = useState(false);
- 
 
   const handleSuccessClose = () => {
     setOpenSuccess(false);
-   
   };
 
   const handleErrorClose = () => {
     setOpenError(false);
   };
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-
+  const handleSubmit = async () => {
     try {
-      const response = await fetch('http://localhost:3003/adduser', {
+      const response = await fetch('http://localhost:3003/postuser', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -46,7 +43,6 @@ function SignIn(props) {
         setOpenSuccess(true);
         setUsername('');
         setEmail('');
-        
       } else {
         setOpenError(true);
       }
@@ -54,8 +50,6 @@ function SignIn(props) {
       setOpenError(true);
     }
   };
-
-
 
   return (
     <ThemeProvider theme={theme}>
@@ -67,32 +61,30 @@ function SignIn(props) {
             הרשם כדי לבצע פעולות
           </Typography>
 
-          <form onSubmit={handleSubmit}>
-            <TextField
-              id="username"
-              label="שם משתמש"
-              variant="filled"
-              fullWidth
-              margin="none"
-              color="primary"
-              value={userName}
-              onChange={(e) => setUsername(e.target.value)}
-            />
-            <TextField
-              id="email"
-              label="כתובת אימייל"
-              type="email"
-              variant="filled"
-              fullWidth
-              margin="none"
-              color="primary"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-            />
-            <Button type="submit" variant="contained" color="primary" size="large">
-              הירשם
-            </Button>
-          </form>
+          <TextField
+            id="username"
+            label="שם משתמש"
+            variant="filled"
+            fullWidth
+            margin="none"
+            color="primary"
+            value={userName}
+            onChange={(e) => setUsername(e.target.value)}
+          />
+          <TextField
+            id="email"
+            label="כתובת אימייל"
+            type="email"
+            variant="filled"
+            fullWidth
+            margin="none"
+            color="primary"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+          />
+          <Button onClick={handleSubmit} variant="contained" color="primary" size="large">
+            הירשם
+          </Button>
         </div>
 
         <Snackbar

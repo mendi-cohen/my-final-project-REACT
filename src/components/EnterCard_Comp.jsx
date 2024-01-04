@@ -27,7 +27,7 @@ export default function EnterCard(props) {
               <CloseIcon />
             </IconButton>
           <CardContent>
-               <div> {props.sign_Or_Login_Comp} </div>
+               <div> {props.components} </div>
           </CardContent>
           <CardActions>
             

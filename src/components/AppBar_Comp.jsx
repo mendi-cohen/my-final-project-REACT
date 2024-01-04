@@ -22,7 +22,7 @@ import { Snackbar } from '@mui/material';
 
 export default function MenuAppBar(props) {
 
-  const [auth, setAuth] = React.useState(true);
+  const [auth, setAuth] = React.useState(false);
   const [anchorEl, setAnchorEl] = React.useState(null);
   const [userStatus, info] = React.useState("מנותק");
   const [userColor, infoColor] = React.useState("indianred");
@@ -32,7 +32,7 @@ export default function MenuAppBar(props) {
   const [openError, setOpenError] = React.useState(false);
   const [emailFromLogin, setEmailFromLogin] = React.useState("");
   const [userName, setUserName] = React.useState("");
-  const [profile , setProfile] = React.useState(false)
+  const [userProfile , setProfile] = React.useState(false)
 
   
 
@@ -107,13 +107,18 @@ export default function MenuAppBar(props) {
   const handleClose = () => {
     setAnchorEl(null);
   };
+
+
+  const profile = ()=>{
+    setProfile(true);
+  }
  
 
   return (
     <>
     <Box sx={{ flexGrow: 1 }}>
     
-      <AppBar position="static" sx={{color: userColor , background:'#4caf50'} }>
+      <AppBar position="static" sx={{ background:'#4caf50'} }>
         <Toolbar>
         <FormGroup>
         <FormControlLabel
@@ -124,11 +129,13 @@ export default function MenuAppBar(props) {
               aria-label="login switch"
             />
           }
+          className={auth ? '' : 'blinking-text'}
           label={auth ? 'התנתק' : 'התחבר'}
+       
         />
       </FormGroup>
-      <Typography variant="h5" component="div" sx={{ flexGrow: 1 }}> 
-  {auth ? userName :` מצב:  ${userStatus}`} 
+      <Typography variant="h5" component="div" sx={{ flexGrow: 1 ,color: userColor }}> 
+  {auth ? userName :` מצב:  ${userStatus} `} 
 </Typography>
           
           {auth && (
@@ -142,7 +149,8 @@ export default function MenuAppBar(props) {
                 onClick= {handleMenu}
                 color="inherit"
               >
-                <div>{emailFromLogin}</div>
+              <div>{emailFromLogin}</div>
+
                 <AccountCircle />
               </IconButton>
               
@@ -161,7 +169,7 @@ export default function MenuAppBar(props) {
                 open={Boolean(anchorEl)}
                 onClose={handleClose}
               >
-                <MenuItem onClick={handleClose}>פרופיל</MenuItem>
+                <MenuItem onClick={profile}>פרופיל</MenuItem>
               </Menu>
              
             </div>
@@ -170,7 +178,7 @@ export default function MenuAppBar(props) {
       </AppBar>
    
       {login ? 
-      <div className="log-in"><EnterCard sign_Or_Login_Comp={<Login onSuccess={(email , name) => Success_Login(email , name)} />} restartLog = {showLogin} />
+      <div className="log-in"><EnterCard components={<Login onSuccess={(email , name) => Success_Login(email , name)} />} restartLog = {showLogin} />
       </div>
       :  null
      }
@@ -199,6 +207,7 @@ anchorOrigin={{ vertical: 'top', horizontal: 'center' }}
    התנתקת מהחשבון ! 
 </MuiAlert>
 </Snackbar>
+{userProfile &&(<div className='profile'> <EnterCard restartLog = {setProfile}/> </div>)}
 </>
   );
   

@@ -9,20 +9,22 @@
   background-repeat: no-repeat;
   background-size: cover;
   align-items: center;
-  height: 40rem;
+  height: 45rem;
 }
 
 .sign-in {
-  animation: slideInFromTop 2.5s ease-out;
+  animation: slideInFromLeft 2.5s ease-out;
   display: flex;
-  flex-direction: row-reverse
+  flex-direction: reverse;
+  position: absolute;
+  top: 45%;
 }
-@keyframes slideInFromTop {
+@keyframes slideInFromLeft { 
   0% {
-    transform: translateY(-100%);
+    transform: translateX(-100%);
   }
  100% {
-    transform: translateY(0);
+    transform: translateX(0);
   }
 }
 
@@ -30,6 +32,7 @@
 .enter-Button{
   width: 20%;
   height: 70px;
+
  
 }
 .log-in{
@@ -64,6 +67,40 @@
     transform: translate(-50%, -50%); /* להניע את העיגול למקום תחילתי עם translate */
     z-index: -1; /* שהעיגול יהיה מאחורי הטקסט */
   }
+
+  @keyframes blink {
+    0% {
+      color: #3cda41; /* צבע רגיל */
+    }
+    50% {
+      color: #ffeb3b; /* צבע הבהוב */
+    }
+    100% {
+      color: #3cda41; /* צבע רגיל */
+    }
+  }
   
+  .blinking-text {
+    animation: blink 1s infinite; /* 1s האנימציה תיכנס לתוקף במשך שנייה ותחזור חזרה בלולאה אינסופית */
+  }
+  .profile {
+    animation: slideInFromRight 1.5s ease-out; 
+    position: absolute;
+    right: 1%;
+  }
+  
+  @keyframes slideInFromRight {
+    0% {
+      transform: translateX(100%);
+    }
+    100% {
+      transform: translateX(0%);
+    }
+  }
+  
+  .moveToWeb{
+    position: relative;
+    top: 60%;
+  }
   
 
