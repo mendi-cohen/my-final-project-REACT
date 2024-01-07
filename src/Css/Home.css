@@ -13,7 +13,7 @@
 }
 
 .sign-in {
-  animation: slideInFromLeft 2.5s ease-out;
+  animation: slideInFromLeft 2s ease-out;
   display: flex;
   flex-direction: reverse;
   position: absolute;

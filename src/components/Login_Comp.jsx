@@ -1,7 +1,7 @@
 import React from "react";
 import { TextField, Button, ThemeProvider, createTheme, Typography } from '@material-ui/core/';
-import { Alert as MuiAlert } from '@mui/material';
 import { Snackbar } from '@mui/material';
+import Alert from '@mui/material/Alert';
 import { useState } from "react";
 // import { useNavigate } from "react-router-dom";
 
@@ -101,9 +101,9 @@ return (
           onClose={handleSuccessClose}
           anchorOrigin={{ vertical: 'top', horizontal: 'center' }}
         >
-          <MuiAlert elevation={6} variant="filled" severity="success" onClose={handleSuccessClose}>
+          <Alert elevation={6} variant="filled" severity="success" onClose={handleSuccessClose}>
             התחברות בוצעה בהצלחה!
-          </MuiAlert>
+          </Alert>
         </Snackbar>
 
         <Snackbar
@@ -112,9 +112,9 @@ return (
           onClose={handleErrorClose}
           anchorOrigin={{ vertical: 'top', horizontal: 'center' }}
         >
-          <MuiAlert elevation={6} variant="filled" severity="error" onClose={handleErrorClose}>
+          <Alert elevation={6} variant="filled" severity="error" onClose={handleErrorClose}>
             שגיאה בהתחברות. אנא נסה שוב.
-          </MuiAlert>
+          </Alert>
         </Snackbar>
       </>
     </ThemeProvider>

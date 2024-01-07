@@ -1,11 +1,14 @@
 import React from 'react';
-import MyHomeRouter from './Routes/Home_router';
+import MyRouter from './Routes/Router';
+import './Css/About.css'
+import './Css/Home.css'
+
 
 function App() {
   return (
    
       <div className="App">
-        <MyHomeRouter />
+        <MyRouter/>
       </div>
    
   );

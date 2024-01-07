@@ -190,7 +190,7 @@ export default function MenuAppBar(props) {
 open={openSuccess}
 autoHideDuration={6000}
 onClose={handleSuccessClose}
-anchorOrigin={{ vertical: 'top', horizontal: 'center' }}
+anchorOrigin={{ vertical: 'bottom', horizontal: 'center' }}
 >
 <MuiAlert elevation={6} variant="filled" severity="success" onClose={handleSuccessClose}>
  ! התחברות בוצעה בהצלחה

@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { TextField, Button, ThemeProvider, createTheme, Typography } from '@material-ui/core/';
-import { Alert as MuiAlert } from '@mui/material';
 import { Snackbar } from '@mui/material';
+import Alert from '@mui/material/Alert';
 import '../Css/Home.css'
 
 const theme = createTheme({
@@ -64,6 +64,7 @@ function SignIn(props) {
           <TextField
             id="username"
             label="שם משתמש"
+            type='textfield'
             variant="filled"
             fullWidth
             margin="none"
@@ -93,9 +94,9 @@ function SignIn(props) {
           onClose={handleSuccessClose}
           anchorOrigin={{ vertical: 'top', horizontal: 'center' }}
         >
-          <MuiAlert elevation={6} variant="filled" severity="success" onClose={handleSuccessClose}>
+          <Alert elevation={6} variant="filled" severity="success" onClose={handleSuccessClose}>
             הרשמה בוצעה בהצלחה!
-          </MuiAlert>
+          </Alert>
         </Snackbar>
 
         <Snackbar
@@ -104,9 +105,9 @@ function SignIn(props) {
           onClose={handleErrorClose}
           anchorOrigin={{ vertical: 'top', horizontal: 'center' }}
         >
-          <MuiAlert elevation={6} variant="filled" severity="error" onClose={handleErrorClose}>
+          <Alert elevation={6} variant="filled" severity="error" onClose={handleErrorClose}>
             שגיאה בהרשמה. אנא נסה שוב.
-          </MuiAlert>
+          </Alert>
         </Snackbar>
       </>
     </ThemeProvider>
