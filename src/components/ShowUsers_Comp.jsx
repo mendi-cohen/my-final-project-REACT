@@ -1,11 +1,12 @@
 import React from 'react';
 import { useState, useEffect } from 'react';
+import { DataGrid } from '@mui/x-data-grid';
 
-function A (){
+function ShowUsers (){
 
     const [users , setUser] = useState([])
 
-    const handleSubmit = async () => {
+    const showAllUsers = async () => {
         try {
           const response = await fetch(`http://localhost:3003/users`, {
             method: 'GET',
@@ -31,23 +32,27 @@ function A (){
       };
 
       useEffect(() => {
-        handleSubmit();
+        showAllUsers();
         
     }, []); 
+    const columns = [
+      { field: 'id', headerName: 'ID', width: 70 },
+      { field: 'userName', headerName: 'User Name', width: 130 },
+      { field: 'email', headerName: 'Email', width: 200 },
+    ];
 
     return(
         <>
-        <h1 className='AA'> users: </h1>
-       <div>
-            {users.map((user)=>(
-               <div key={user.id}>
-                <p>ID: {user.id}</p>
-                <p>NAME: {user.userName}</p>
-                <p>EMAIL: {user.email}</p>
-               </div>
-            ))}
-        </div>
+        <h1 className='headOfUsers'> users: </h1>
+        <div style={{ height: 400, width: '100%' }}>
+      <DataGrid
+        rows={users}
+        columns={columns}
+        pageSize={5}
+        checkboxSelection
+      />
+    </div>
         </>
     )
 }
-export default A
+export default ShowUsers
