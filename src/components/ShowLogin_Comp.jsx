@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { DataGrid } from '@mui/x-data-grid';
 
 function ShowLogs() {
-  const [Logs, setLogs] = useState([]);
+  const [logs, setLogs] = useState([]);
 
   const showAllLogs = async () => {
     try {
@@ -18,13 +18,13 @@ function ShowLogs() {
         if (data && data.loginFdb && data.loginFdb.length > 0) {
           setLogs(data.loginFdb);
         } else {
-          console.log("loginName is not present in the response data");
+          console.log("No login data in the response");
         }
       } else {
-        console.log("no good response");
+        console.log("Server response is not okay");
       }
     } catch (error) {
-      console.log("the server returned", error);
+      console.log("Error while fetching data from the server", error);
     }
   };
 
@@ -34,8 +34,7 @@ function ShowLogs() {
 
   const columns = [
     { field: 'id', headerName: 'ID', width: 70 },
-    { field: 'userName', headerName: 'User Name', width: 130 },
-    { field: 'email', headerName: 'Email', width: 200 },
+    { field: 'user_id', headerName: 'User ID', width: 130 },
     { field: 'connect_time', headerName: 'Connect Time', width: 150 },
     {
       field: 'connect_date',
@@ -47,19 +46,23 @@ function ShowLogs() {
         </span>
       ),
     },
-  ];
+    { field: 'connect_off', headerName: 'off', width: 150 },
+    { field: 'token', headerName: 'Token', width: 150 },
+    { field: 'userName', headerName: 'User Name', width: 130 },
+  ].map((col) => ({ ...col, sortable: false, filterable: false })); // הוסף מפתח ייחודי לכל עמודה
 
   return (
     <>
-    <h1 className='headOfLogin'> Login: </h1>
-    <div style={{ height: 500, width: '100%' }}>
-      <DataGrid
-        rows={Logs}
-        columns={columns}
-        pageSize={5}
-        checkboxSelection
-      />
-    </div>
+      <h1 className='headOfLogin'> Login: </h1>
+      <div style={{ height: 500, width: '100%' }}>
+        <DataGrid
+          rows={logs}
+          columns={columns}
+          pageSize={5}
+          checkboxSelection
+          key="logs_key"
+        />
+      </div>
     </>
   );
 }

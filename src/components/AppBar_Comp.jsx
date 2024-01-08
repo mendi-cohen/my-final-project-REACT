@@ -178,7 +178,7 @@ export default function MenuAppBar(props) {
       </AppBar>
    
       {login ? 
-      <div className="log-in"><EnterCard components={<Login onSuccess={(email , name) => Success_Login(email , name)} />} restartLog = {showLogin} />
+      <div className="log-in" style={{ position: 'absolute', top: 0, left: 0, zIndex: 3 }}><EnterCard components={<Login onSuccess={(email , name) => Success_Login(email , name)} />} restartLog = {showLogin} />
       </div>
       :  null
      }
