@@ -9,9 +9,6 @@ import { useState } from "react";
 
 const theme = createTheme({
     palette: {
-      primary: {
-        main: '#4caf50',
-      },
     },
     typography: {
       fontFamily: ['Noto Sans Hebrew', 'sans-serif'].join(','),
@@ -71,9 +68,8 @@ return (
       <>
         <div className="login">
           <Typography color="primary" variant="h6">
-            שלום לך גולש יקר
-            <br />
             התחבר כדי לבצע פעולות
+            <br />
           </Typography>
 
           <form onSubmit={handleSubmit}>

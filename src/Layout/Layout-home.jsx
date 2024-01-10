@@ -3,6 +3,8 @@ import { Outlet,   } from "react-router-dom";
 import MenuAppBar from "../components/AppBar_Comp";
 import { ThemeProvider } from '@material-ui/core/styles';
 import Theme from '../components/Theme_Comp'; 
+import SideBar from '../components/SideBar_Comp'
+
 
 
 
@@ -15,7 +17,8 @@ export default function Root() {
     <div> 
 
       <header><MenuAppBar/></header>
-        <Outlet />
+      <SideBar/>
+        <div><Outlet /></div>
 
     </div>
    </ThemeProvider>

@@ -12,9 +12,19 @@ import MenuItem from '@mui/material/MenuItem';
 import Menu from '@mui/material/Menu';
 import EnterCard from './EnterCard_Comp';
 import Login from './Login_Comp';
-import { Alert as MuiAlert } from '@mui/material';
+import { Button, Alert as MuiAlert } from '@mui/material';
 import { Snackbar } from '@mui/material';
+import SignIn from './SignIn_Comp';
+import { createTheme, ThemeProvider } from '@material-ui/core/';
 
+
+const theme = createTheme({
+  palette: {
+    primary: {
+      main: '#ffc107' ,
+    },
+  },
+});
 
 
 
@@ -25,8 +35,9 @@ export default function MenuAppBar(props) {
   const [auth, setAuth] = React.useState(false);
   const [anchorEl, setAnchorEl] = React.useState(null);
   const [userStatus, info] = React.useState("מנותק");
-  const [userColor, infoColor] = React.useState("indianred");
+  const [userColor, infoColor] = React.useState("red");
   const [login , showLogin] = React.useState(false);
+  const [signin , showSignin] = React.useState(false);
   const [loginSuccess , setloginSuccess] = React.useState(false);
   const [openSuccess, setOpenSuccess] =React.useState(false);
   const [openError, setOpenError] = React.useState(false);
@@ -42,6 +53,16 @@ export default function MenuAppBar(props) {
   const handleErrorClose = () => {
     setOpenError(false);
   };
+
+  // הרשמת משתמש 
+const signToWeb =()=>{
+  showSignin(true);
+  if (signin) {
+  showSignin(false);
+  }
+}
+
+
 
       // התחברות המשתמש 
   
@@ -116,9 +137,10 @@ export default function MenuAppBar(props) {
 
   return (
     <>
+    <ThemeProvider theme={theme}>
     <Box sx={{ flexGrow: 1 }}>
     
-      <AppBar position="static" sx={{ background:'rgb(33, 187, 130)'} }>
+      <AppBar position="static" >
         <Toolbar>
         <FormGroup>
         <FormControlLabel
@@ -128,12 +150,24 @@ export default function MenuAppBar(props) {
               onChange={handleChange}
               aria-label="login switch"
             />
+          
           }
           className={auth ? '' : 'blinking-text'}
           label={auth ? 'התנתק' : 'התחבר'}
-       
         />
       </FormGroup>
+    
+      <Button
+              className="enter-Button"
+              variant="contained"
+              color="primary"
+              size="small"
+              onClick={signToWeb}
+              sx={{backgroundColor :'#26a69a' , fontSize : '20px' }}
+            >
+              הרשמה
+            </Button>
+          
       <Typography variant="h5" component="div" sx={{ flexGrow: 1 ,color: userColor }}> 
   {auth ? userName :` מצב:  ${userStatus} `} 
 </Typography>
@@ -182,6 +216,11 @@ export default function MenuAppBar(props) {
       </div>
       :  null
      }
+     {signin  ? (  
+        <div className="sign-in">
+          <EnterCard components={<SignIn />} restartLog={signToWeb} />
+        </div>
+      ) : null}
 
      
     </Box>
@@ -208,6 +247,7 @@ anchorOrigin={{ vertical: 'top', horizontal: 'center' }}
 </MuiAlert>
 </Snackbar>
 {userProfile &&(<div className='profile'> <EnterCard restartLog = {setProfile}/> </div>)}
+</ThemeProvider>
 </>
   );
   

@@ -5,35 +5,23 @@
 }
 
 .main-home{
-  background-image: url("https://alefalefalef.co.il/sheletknisa/wp-content/uploads/2015/06/yad-rambam1-yael-seggev.jpg");
-  background-repeat: no-repeat;
-  background-size: cover;
+background-color: gainsboro;
   align-items: center;
-  height: 45rem;
+  height: 50rem;
 }
 
 .sign-in {
-  animation: slideInFromLeft 2s ease-out;
+  animation: slideInFromTop 1.5s ease-out;
   display: flex;
   flex-direction: reverse;
   position: absolute;
-  top: 45%;
-}
-@keyframes slideInFromLeft { 
-  0% {
-    transform: translateX(-100%);
-  }
- 100% {
-    transform: translateX(0);
-  }
-}
 
+}
 
 .enter-Button{
   width: 20%;
   height: 70px;
 
- 
 }
 .log-in{
   animation: slideInFromTop 1.5s ease-out; 

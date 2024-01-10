@@ -1,6 +1,5 @@
 import React from 'react';
 import MyRouter from './Routes/RouterApp';
-import './Css/About.css'
 import './Css/Home.css'
 
 

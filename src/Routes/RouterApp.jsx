@@ -3,7 +3,7 @@ import LayoutHome from '../Layout/Layout-home';
 import Home from '../Pages/Home';
 import ShowUsers from '../components/ShowUsers_Comp';
 import ShowLogs from '../components/ShowLogin_Comp';
-import LayoutAbout from '../Layout/Layout-about'
+import EmailForm from '../components/SendEmail_Comp';
 
 const MyRouter = () => {
   return (
@@ -11,11 +11,9 @@ const MyRouter = () => {
       <Routes>
         <Route path='/' element={<LayoutHome/>}>
           <Route index  element={<Home/>} />
-         
-          <Route path='/about' element ={<LayoutAbout/>}>
-            <Route path="allUsers" element={<ShowUsers/>}/>
+          <Route path="allUsers" element={<ShowUsers/>}/>
             <Route path="allLogin" element={<ShowLogs/>}/>
-        </Route>
+            <Route path="sendEmail" element={<EmailForm/>}/>
         </Route>
       </Routes>
     </Router>
