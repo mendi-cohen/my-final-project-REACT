@@ -6,7 +6,6 @@ const SMSForm = () => {
 
   const sendSMS = async () => {
     try {
-
       await axios.post('http://localhost:3003/forms/send-email', {
         toEmail: 'yaffa1120@gmail.com', 
         messageBody: 'Hello, this is a test message!',

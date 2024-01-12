@@ -9,18 +9,24 @@ import ListItemButton from '@mui/material/ListItemButton';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
 import MailIcon from '@mui/icons-material/Mail';
+import AddTaskIcon from '@mui/icons-material/AddTask';
+import AccountBoxIcon from '@mui/icons-material/AccountBox';
 import { Link } from 'react-router-dom';
+import EnterCard from './EnterCard_Comp';
+import Admin from './Admin_Comp';
 
 export default function SideBar() {
   const [state, setState] = React.useState({
     right: false,
   });
+ const [admin , chackAdmins] = React.useState(false)
 
-  const toggleDrawer = (anchor, open) => (event) => {
-    if (event.type === 'keydown' && (event.key === 'Tab' || event.key === 'Shift')) {
-      return;
-    }
-    setState({ ...state, [anchor]: open });
+  function YESadmin() {
+    chackAdmins(true);
+  }
+
+  const toggleDrawer = (anchor, open) => () => {
+      setState({ ...state, [anchor]: open }); 
   };
 
   const links = [
@@ -51,7 +57,7 @@ export default function SideBar() {
           <ListItem key={link.text} disablePadding>
             <ListItemButton component = {Link} to = {link.to}>
               <ListItemIcon>
-                <MailIcon />
+              {index === 0 ? <AccountBoxIcon /> : <AddTaskIcon />}
               </ListItemIcon>
               <ListItemText primary={link.text} />
             </ListItemButton>
@@ -63,7 +69,7 @@ export default function SideBar() {
 
   return (
     <div>
-      <Button onClick={toggleDrawer('right', true)}> !כניסת מנהל בלבד  </Button>
+      <Button onClick={YESadmin}> !כניסת מנהל בלבד  </Button>
       <Drawer
         anchor={'right'}
         open={state['right']}
@@ -71,6 +77,12 @@ export default function SideBar() {
       >
         {list('right')}
       </Drawer>
+      {admin  ? (  
+        <div className="admin">
+          <EnterCard components = {<Admin success = {toggleDrawer('right', true)}/>} restartLog = {chackAdmins}/>
+        </div>
+      ) : null}
+
     </div>
   );
 }

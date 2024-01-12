@@ -12,21 +12,17 @@ background-color: gainsboro;
 
 .sign-in {
   animation: slideInFromTop 1.5s ease-out;
-  display: flex;
-  flex-direction: reverse;
   position: absolute;
-
-}
-
-.enter-Button{
-  width: 20%;
-  height: 70px;
-
 }
 .log-in{
   animation: slideInFromTop 1.5s ease-out; 
   position: absolute;
 }
+.admin{ 
+  animation: slideInFromTop 1.5s ease-out; 
+  position: absolute;
+}
+
 @keyframes slideInFromTop {
 0% {
   transform: translateY(-100%);
