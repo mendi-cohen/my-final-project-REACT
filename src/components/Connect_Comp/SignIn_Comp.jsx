@@ -1,22 +1,33 @@
-import React, { useState } from 'react';
-import { TextField, Button, ThemeProvider, createTheme, Typography } from '@material-ui/core/';
-import { Snackbar } from '@mui/material';
-import Alert from '@mui/material/Alert';
-import '../Css/Home.css'
+///ייבואים
+
+import React, { useState } from "react";
+import {
+  TextField,
+  Button,
+  ThemeProvider,
+  createTheme,
+  Typography,
+} from "@material-ui/core/";
+import { Snackbar } from "@mui/material";
+import Alert from "@mui/material/Alert";
+
+/// עיצוב
 
 const theme = createTheme({
-  palette: {
-  },
+  palette: {},
   typography: {
-    fontFamily: ['Noto Sans Hebrew', 'sans-serif'].join(','),
+    fontFamily: ["Noto Sans Hebrew", "sans-serif"].join(","),
   },
 });
 
 function SignIn(props) {
-  const [userName, setUsername] = useState('');
-  const [email, setEmail] = useState('');
+  ///סטייטים
+  const [userName, setUsername] = useState("");
+  const [email, setEmail] = useState("");
   const [openSuccess, setOpenSuccess] = useState(false);
   const [openError, setOpenError] = useState(false);
+
+  ///פונקציות
 
   const handleSuccessClose = () => {
     setOpenSuccess(false);
@@ -28,18 +39,18 @@ function SignIn(props) {
 
   const handleSubmit = async () => {
     try {
-      const response = await fetch('http://localhost:3003/postuser', {
-        method: 'POST',
+      const response = await fetch("http://localhost:3003/postuser", {
+        method: "POST",
         headers: {
-          'Content-Type': 'application/json',
+          "Content-Type": "application/json",
         },
         body: JSON.stringify({ userName, email }),
       });
 
       if (response.ok) {
         setOpenSuccess(true);
-        setUsername('');
-        setEmail('');
+        setUsername("");
+        setEmail("");
       } else {
         setOpenError(true);
       }
@@ -47,6 +58,8 @@ function SignIn(props) {
       setOpenError(true);
     }
   };
+
+  /// רינדור הקומפוננטה
 
   return (
     <ThemeProvider theme={theme}>
@@ -61,7 +74,7 @@ function SignIn(props) {
           <TextField
             id="username"
             label="שם משתמש"
-            type='textfield'
+            type="textfield"
             variant="filled"
             fullWidth
             margin="none"
@@ -80,7 +93,12 @@ function SignIn(props) {
             value={email}
             onChange={(e) => setEmail(e.target.value)}
           />
-          <Button onClick={handleSubmit} variant="contained" color="primary" size="large">
+          <Button
+            onClick={handleSubmit}
+            variant="contained"
+            color="primary"
+            size="large"
+          >
             הירשם
           </Button>
         </div>
@@ -89,9 +107,14 @@ function SignIn(props) {
           open={openSuccess}
           autoHideDuration={6000}
           onClose={handleSuccessClose}
-          anchorOrigin={{ vertical: 'top', horizontal: 'center' }}
+          anchorOrigin={{ vertical: "top", horizontal: "center" }}
         >
-          <Alert elevation={6} variant="filled" severity="success" onClose={handleSuccessClose}>
+          <Alert
+            elevation={6}
+            variant="filled"
+            severity="success"
+            onClose={handleSuccessClose}
+          >
             הרשמה בוצעה בהצלחה!
           </Alert>
         </Snackbar>
@@ -100,9 +123,14 @@ function SignIn(props) {
           open={openError}
           autoHideDuration={6000}
           onClose={handleErrorClose}
-          anchorOrigin={{ vertical: 'top', horizontal: 'center' }}
+          anchorOrigin={{ vertical: "top", horizontal: "center" }}
         >
-          <Alert elevation={6} variant="filled" severity="error" onClose={handleErrorClose}>
+          <Alert
+            elevation={6}
+            variant="filled"
+            severity="error"
+            onClose={handleErrorClose}
+          >
             שגיאה בהרשמה. אנא נסה שוב.
           </Alert>
         </Snackbar>

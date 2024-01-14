@@ -1,42 +1,50 @@
-import * as React from 'react';
-import Box from '@mui/material/Box';
-import Drawer from '@mui/material/Drawer';
-import Button from '@mui/material/Button';
-import List from '@mui/material/List';
-import Divider from '@mui/material/Divider';
-import ListItem from '@mui/material/ListItem';
-import ListItemButton from '@mui/material/ListItemButton';
-import ListItemIcon from '@mui/material/ListItemIcon';
-import ListItemText from '@mui/material/ListItemText';
-import MailIcon from '@mui/icons-material/Mail';
-import AddTaskIcon from '@mui/icons-material/AddTask';
-import AccountBoxIcon from '@mui/icons-material/AccountBox';
-import { Link } from 'react-router-dom';
-import EnterCard from './EnterCard_Comp';
-import Admin from './Admin_Comp';
+///ייבואים
+
+import * as React from "react";
+import Box from "@mui/material/Box";
+import Drawer from "@mui/material/Drawer";
+import Button from "@mui/material/Button";
+import List from "@mui/material/List";
+import Divider from "@mui/material/Divider";
+import ListItem from "@mui/material/ListItem";
+import ListItemButton from "@mui/material/ListItemButton";
+import ListItemIcon from "@mui/material/ListItemIcon";
+import ListItemText from "@mui/material/ListItemText";
+import MailIcon from "@mui/icons-material/Mail";
+import AddTaskIcon from "@mui/icons-material/AddTask";
+import AccountBoxIcon from "@mui/icons-material/AccountBox";
+import { Link } from "react-router-dom";
+import EnterCard from "./EnterCard_Comp";
+import Admin from "./Connect_Comp/Admin_Comp";
 
 export default function SideBar() {
+  /// סטייטים
+
   const [state, setState] = React.useState({
     right: false,
   });
- const [admin , chackAdmins] = React.useState(false)
+  const [admin, chackAdmins] = React.useState(false);
 
-  function YESadmin() {
+  /// פונקציות
+
+  const YESadmin = () => {
     chackAdmins(true);
-  }
+  };
 
   const toggleDrawer = (anchor, open) => () => {
-      setState({ ...state, [anchor]: open }); 
+    setState({ ...state, [anchor]: open });
   };
 
   const links = [
-    { text: 'כל הרשומים', to: '/allUsers' },
-    { text: 'כל החיבורים', to: '/allLogin' },
+    { text: "כל הרשומים", to: "/allUsers" },
+    { text: "כל החיבורים", to: "/allLogin" },
+    { text: "כתיבת מאמרים", to: "/writeArticel" },
+    { text: "כתיcccccבת מאמרים", to: "/w" },
   ];
 
   const list = (anchor) => (
     <Box
-      sx={{ width: anchor === 'top' || anchor === 'bottom' ? 'auto' : 250 }}
+      sx={{ width: anchor === "top" || anchor === "bottom" ? "auto" : 250 }}
       role="presentation"
       onClick={toggleDrawer(anchor, false)}
       onKeyDown={toggleDrawer(anchor, false)}
@@ -55,9 +63,10 @@ export default function SideBar() {
       <List>
         {links.map((link, index) => (
           <ListItem key={link.text} disablePadding>
-            <ListItemButton component = {Link} to = {link.to}>
+            <ListItemButton component={Link} to={link.to}>
               <ListItemIcon>
-              {index === 0 ? <AccountBoxIcon /> : <AddTaskIcon />}
+                <AccountBoxIcon />
+                <AddTaskIcon />
               </ListItemIcon>
               <ListItemText primary={link.text} />
             </ListItemButton>
@@ -67,22 +76,26 @@ export default function SideBar() {
     </Box>
   );
 
+  /// רינדור הקומפוננטה
+
   return (
     <div>
-      <Button onClick={YESadmin}> !כניסת מנהל בלבד  </Button>
+      <Button onClick={YESadmin}> !כניסת מנהל בלבד </Button>
       <Drawer
-        anchor={'right'}
-        open={state['right']}
-        onClose={toggleDrawer('right', false)}
+        anchor={"right"}
+        open={state["right"]}
+        onClose={toggleDrawer("right", false)}
       >
-        {list('right')}
+        {list("right")}
       </Drawer>
-      {admin  ? (  
+      {admin ? (
         <div className="admin">
-          <EnterCard components = {<Admin success = {toggleDrawer('right', true)}/>} restartLog = {chackAdmins}/>
+          <EnterCard
+            components={<Admin success={toggleDrawer("right", true)} />}
+            restartLog={chackAdmins}
+          />
         </div>
       ) : null}
-
     </div>
   );
 }

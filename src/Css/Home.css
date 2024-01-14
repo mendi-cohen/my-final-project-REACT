@@ -5,7 +5,7 @@
 }
 
 .main-home{
-background-color: gainsboro;
+background-color: rgb(255, 252, 252);
   align-items: center;
   height: 50rem;
 }
@@ -32,25 +32,7 @@ background-color: gainsboro;
 }
 
 }
-.textofheader {
-    position: relative;
-    color: #4caf50;
-    font-size: 20px; 
-    display: inline-block;
-  }
-  
-  .textofheader:before {
-    content: '';
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    width: 120%; 
-    height: 120%; 
-    background-color: #fff; 
-    border-radius: 10%; /* יצירת צורת עיגול */
-    transform: translate(-50%, -50%); /* להניע את העיגול למקום תחילתי עם translate */
-    z-index: -1; /* שהעיגול יהיה מאחורי הטקסט */
-  }
+
 
   @keyframes blink {
     0% {
@@ -86,5 +68,9 @@ background-color: gainsboro;
     position: relative;
     top: 60%;
   }
-  
+  .text-editor-rtl .ql-editor {
+    direction: rtl;
+    text-align: right; 
+  }
+
 

@@ -1,15 +1,21 @@
-import React, { useState, useEffect } from 'react';
-import { DataGrid } from '@mui/x-data-grid';
+///ייבואים
+
+import React, { useState, useEffect } from "react";
+import { DataGrid } from "@mui/x-data-grid";
 
 function ShowLogs() {
+  /// סטייטים
+
   const [logs, setLogs] = useState([]);
+
+  /// פונקציות
 
   const showAllLogs = async () => {
     try {
       const response = await fetch(`http://localhost:3003/showlogin`, {
-        method: 'GET',
+        method: "GET",
         headers: {
-          'Content-Type': 'application/json',
+          "Content-Type": "application/json",
         },
       });
 
@@ -33,28 +39,30 @@ function ShowLogs() {
   }, []);
 
   const columns = [
-    { field: 'id', headerName: 'ID', width: 70 },
-    { field: 'user_id', headerName: 'User ID', width: 130 },
-    { field: 'connect_time', headerName: 'Connect Time', width: 150 },
+    { field: "id", headerName: "ID", width: 70 },
+    { field: "user_id", headerName: "User ID", width: 130 },
+    { field: "connect_time", headerName: "Connect Time", width: 150 },
     {
-      field: 'connect_date',
-      headerName: 'Connect Date',
+      field: "connect_date",
+      headerName: "Connect Date",
       width: 150,
       renderCell: (params) => (
         <span>
-          {new Date(params.row.connect_date).toLocaleDateString('en-GB')}
+          {new Date(params.row.connect_date).toLocaleDateString("en-GB")}
         </span>
       ),
     },
-    { field: 'connect_off', headerName: 'off', width: 150 },
-    { field: 'token', headerName: 'Token', width: 150 },
-    { field: 'userName', headerName: 'User Name', width: 130 },
-  ].map((col) => ({ ...col, sortable: false, filterable: false })); // הוסף מפתח ייחודי לכל עמודה
+    { field: "connect_off", headerName: "off", width: 150 },
+    { field: "token", headerName: "Token", width: 150 },
+    { field: "userName", headerName: "User Name", width: 130 },
+  ].map((col) => ({ ...col, sortable: false, filterable: false }));
+
+  ///רינדור הקומפוננטה
 
   return (
     <>
-      <h1 className='headOfLogin'> Login: </h1>
-      <div style={{ height: 500, width: '100%' }}>
+      <h1 className="headOfLogin"> Login: </h1>
+      <div style={{ height: 500, width: "100%" }}>
         <DataGrid
           rows={logs}
           columns={columns}

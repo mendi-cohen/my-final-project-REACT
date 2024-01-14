@@ -1,15 +1,21 @@
-import React, { useState, useEffect } from 'react';
-import { DataGrid } from '@mui/x-data-grid';
+/// ייבואים
+
+import React, { useState, useEffect } from "react";
+import { DataGrid } from "@mui/x-data-grid";
 
 function ShowUsers() {
+  /// סטייטים
+
   const [users, setUsers] = useState([]);
+
+  /// פונקציות
 
   const showAllUsers = async () => {
     try {
       const response = await fetch(`http://localhost:3003/users`, {
-        method: 'GET',
+        method: "GET",
         headers: {
-          'Content-Type': 'application/json',
+          "Content-Type": "application/json",
         },
       });
 
@@ -33,15 +39,17 @@ function ShowUsers() {
   }, []);
 
   const columns = [
-    { field: 'id', headerName: 'ID', width: 70, key: 'id' },
-    { field: 'userName', headerName: 'User Name', width: 130, key: 'userName' },
-    { field: 'email', headerName: 'Email', width: 200, key: 'email' },
+    { field: "id", headerName: "ID", width: 70, key: "id" },
+    { field: "userName", headerName: "User Name", width: 130, key: "userName" },
+    { field: "email", headerName: "Email", width: 200, key: "email" },
   ];
+
+  /// רינדור הקומפוננטה
 
   return (
     <>
-      <h1 className='headOfUsers'> Users: </h1>
-      <div style={{ height: 400, width: '100%' }}>
+      <h1 className="headOfUsers"> Users: </h1>
+      <div style={{ height: 400, width: "100%" }}>
         <DataGrid
           rows={users}
           columns={columns}
