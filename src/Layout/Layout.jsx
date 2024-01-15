@@ -1,9 +1,9 @@
 
 import { Outlet,   } from "react-router-dom";
-import MenuAppBar from "../components/AppBar_Comp";
+import MenuAppBar from "../components/Lyout_Comp/AppBar_Comp";
 import { ThemeProvider } from '@material-ui/core/styles';
-import Theme from '../components/Theme_Comp'; 
-import SideBar from '../components/SideBar_Comp';
+import Theme from '../components/Lyout_Comp/Theme_Comp'; 
+import SideBar from '../components/Lyout_Comp/SideBar_Comp';
 
 
 

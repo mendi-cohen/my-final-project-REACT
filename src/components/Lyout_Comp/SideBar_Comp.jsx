@@ -15,7 +15,7 @@ import AddTaskIcon from "@mui/icons-material/AddTask";
 import AccountBoxIcon from "@mui/icons-material/AccountBox";
 import { Link } from "react-router-dom";
 import EnterCard from "./EnterCard_Comp";
-import Admin from "./Connect_Comp/Admin_Comp";
+import Admin from "../Connect_Comp/Admin_Comp";
 
 export default function SideBar() {
   /// סטייטים

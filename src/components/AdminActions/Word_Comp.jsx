@@ -1,22 +1,29 @@
-///ייבואים
-
+import { format } from 'date-fns-tz';
 import React, { useState } from "react";
 import ReactQuill from "react-quill";
 import "react-quill/dist/quill.snow.css";
 import { Button } from "@material-ui/core";
-import SelectText from "../Selection_Comp";
+import SelectText from "../Lyout_Comp/Selection_Comp";
 import { Snackbar } from "@mui/material";
 import Alert from "@mui/material/Alert";
+import { ThemeProvider, createTheme } from "@material-ui/core/";
+import { he } from 'date-fns/locale';
 
-///סטייטים
+const theme = createTheme({
+  palette: {},
+  typography: {
+    fontFamily: ["Noto Sans Hebrew", "sans-serif"].join(","),
+  },
+});
 
 const WordFile = () => {
-  const [editorValue, setEditorValue] = useState("");
+  const [art_value, setEditorValue] = useState("");
   const [title, setTitle] = useState("");
   const [openSuccess, setOpenSuccess] = useState(false);
   const [openError, setOpenError] = useState(false);
+  const date = new Date();
+  const formattedDate = format(date, 'dd/MM/yyyy', { locale: he });
 
-  ///פונקציות
 
   const handleSuccessClose = () => {
     setOpenSuccess(false);
@@ -25,6 +32,7 @@ const WordFile = () => {
   const handleErrorClose = () => {
     setOpenError(false);
   };
+
   const handleChange = (value) => {
     setEditorValue(value);
   };
@@ -35,12 +43,12 @@ const WordFile = () => {
 
   const SaveToDatabase = async () => {
     try {
-      const response = await fetch("http://localhost:3003/postuser", {
+      const response = await fetch("http://localhost:3003/forms/articles", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({ editorValue, title }),
+        body: JSON.stringify({ title, art_value, date }),
       });
 
       if (response.ok) {
@@ -50,60 +58,62 @@ const WordFile = () => {
       }
     } catch (error) {
       setOpenError(true);
+      console.log(error.message);
     }
   };
 
-  /// רינדור הקומפוננטה
-
   return (
-    <>
-      <SelectText onSelect={handleSubjectChange} />
+    <ThemeProvider theme={theme}>
+      <>
+        <SelectText onSelect={handleSubjectChange} />
+        <p>{formattedDate}</p>
+        <div className="text-editor-rtl" style={{ maxWidth: '80%', margin: '0 auto' ,height: '150px'  }}>
+          <ReactQuill theme="snow" value={art_value} onChange={handleChange} />
+        </div>
 
-      <div className="text-editor-rtl">
-        <ReactQuill theme="snow" value={editorValue} onChange={handleChange} />
-      </div>
-      <Button
-        type="submit"
-        variant="contained"
-        color="primary"
-        size="large"
-        onClick={SaveToDatabase}
-      >
-        שמור לבסיס הנתונים
-      </Button>
+        <Button
+          type="submit"
+          variant="contained"
+          color="primary"
+          size="large"
+          onClick={SaveToDatabase}
+        >
+          שמור לבסיס הנתונים
+        </Button>
 
-      <Snackbar
-        open={openSuccess}
-        autoHideDuration={6000}
-        onClose={handleSuccessClose}
-        anchorOrigin={{ vertical: "top", horizontal: "center" }}
-      >
-        <Alert
-          elevation={6}
-          variant="filled"
-          severity="success"
+        <Snackbar
+          open={openSuccess}
+          autoHideDuration={6000}
           onClose={handleSuccessClose}
+          anchorOrigin={{ vertical: "top", horizontal: "center" }}
         >
-          ! המאמר נשלח בהצלחה ויוצג למשתמשים באתר
-        </Alert>
-      </Snackbar>
+          <Alert
+            elevation={6}
+            variant="filled"
+            severity="success"
+            onClose={handleSuccessClose}
+          >
+            ! המאמר נשלח בהצלחה ויוצג למשתמשים באתר
+          </Alert>
+        </Snackbar>
 
-      <Snackbar
-        open={openError}
-        autoHideDuration={6000}
-        onClose={handleErrorClose}
-        anchorOrigin={{ vertical: "top", horizontal: "center" }}
-      >
-        <Alert
-          elevation={6}
-          variant="filled"
-          severity="error"
+        <Snackbar
+          open={openError}
+          autoHideDuration={6000}
           onClose={handleErrorClose}
+          anchorOrigin={{ vertical: "top", horizontal: "center" }}
         >
-          ! אופס קרתה תקלה המאמר לא נשלח
-        </Alert>
-      </Snackbar>
-    </>
+          <Alert
+            elevation={6}
+            variant="filled"
+            severity="error"
+            onClose={handleErrorClose}
+          >
+            ! אופס קרתה תקלה המאמר לא נשלח
+          </Alert>
+        </Snackbar>
+      </>
+    </ThemeProvider>
   );
 };
 
