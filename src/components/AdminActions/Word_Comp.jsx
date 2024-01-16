@@ -1,4 +1,3 @@
-import { format } from 'date-fns-tz';
 import React, { useState } from "react";
 import ReactQuill from "react-quill";
 import "react-quill/dist/quill.snow.css";
@@ -22,7 +21,7 @@ const WordFile = () => {
   const [openSuccess, setOpenSuccess] = useState(false);
   const [openError, setOpenError] = useState(false);
   const date = new Date();
-  const formattedDate = format(date, 'dd/MM/yyyy', { locale: he });
+  // const formattedDate = format(date, 'dd/MM/yyyy', { locale: he });
 
 
   const handleSuccessClose = () => {
@@ -65,7 +64,7 @@ const WordFile = () => {
   return (
     <ThemeProvider theme={theme}>
       <>
-        <h2> תאריך: {formattedDate}</h2>
+        <h2> תאריך: </h2>
         <br />
         <SelectText onSelect={handleSubjectChange} />
 
