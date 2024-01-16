@@ -46,7 +46,7 @@ function Login(props) {
     try {
       const encodedEmail = encodeURIComponent(email);
       const response = await fetch(
-        `http://localhost:3003/login?email=${encodedEmail}`,
+        `${process.env.REACT_APP_HOST_API}/login?email=${encodedEmail}`,
         {
           method: "GET",
           headers: {

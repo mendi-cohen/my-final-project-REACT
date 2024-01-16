@@ -95,7 +95,7 @@ export default function MenuAppBar(props) {
 
   const handleSwich = async (email) => {
     try {
-      const response = await fetch(`http://localhost:3003/loginOff/${email}`, {
+      const response = await fetch(`${process.env.REACT_APP_HOST_API}/loginOff/${email}`, {
         method: "DELETE",
       });
 

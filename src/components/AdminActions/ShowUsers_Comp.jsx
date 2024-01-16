@@ -12,7 +12,7 @@ function ShowUsers() {
 
   const showAllUsers = async () => {
     try {
-      const response = await fetch(`http://localhost:3003/users`, {
+      const response = await fetch(`${process.env.REACT_APP_HOST_API}/users`, {
         method: "GET",
         headers: {
           "Content-Type": "application/json",
