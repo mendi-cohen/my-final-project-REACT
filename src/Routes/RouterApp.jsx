@@ -4,6 +4,7 @@ import ShowUsers from '../components/AdminActions/ShowUsers_Comp';
 import ShowLogs from '../components/AdminActions/ShowLogin_Comp';
 import EmailForm from '../components/AdminActions/SendEmail_Comp';
 import WordFile from '../components/AdminActions/Word_Comp';
+import ArticelMenu from '../components/Lyout_Comp/ArticelMenu_Comp';
 
 
 
@@ -16,6 +17,7 @@ const MyRouter = () => {
             <Route path="allLogin" element={<ShowLogs/>}/>
             <Route path="sendEmail" element={<EmailForm/>}/>
             <Route path="writeArticel" element={<WordFile/>}/>
+            <Route path="ArticelMenu" element={<ArticelMenu/>}/>
             
         </Route>
       </Routes>

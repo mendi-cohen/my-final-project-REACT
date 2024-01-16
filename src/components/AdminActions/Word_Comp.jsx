@@ -65,9 +65,14 @@ const WordFile = () => {
   return (
     <ThemeProvider theme={theme}>
       <>
+        <h2> תאריך: {formattedDate}</h2>
+        <br />
         <SelectText onSelect={handleSubjectChange} />
-        <p>{formattedDate}</p>
-        <div className="text-editor-rtl" style={{ maxWidth: '80%', margin: '0 auto' ,height: '150px'  }}>
+
+
+
+
+        <div className="text-editor-rtl" style={{ maxWidth: '90%', margin: '0 auto' ,height: '150px'  }}>
           <ReactQuill theme="snow" value={art_value} onChange={handleChange} />
         </div>
 

@@ -13,6 +13,7 @@ import ListItemText from "@mui/material/ListItemText";
 import MailIcon from "@mui/icons-material/Mail";
 import AddTaskIcon from "@mui/icons-material/AddTask";
 import AccountBoxIcon from "@mui/icons-material/AccountBox";
+import HistoryEduIcon from '@mui/icons-material/HistoryEdu';
 import { Link } from "react-router-dom";
 import EnterCard from "./EnterCard_Comp";
 import Admin from "../Connect_Comp/Admin_Comp";
@@ -39,43 +40,50 @@ export default function SideBar() {
     { text: "כל הרשומים", to: "/allUsers" },
     { text: "כל החיבורים", to: "/allLogin" },
     { text: "כתיבת מאמרים", to: "/writeArticel" },
-    { text: "כתיcccccבת מאמרים", to: "/w" },
+    { text: " שליחת אימייל", to: "/sendEmail" },
   ];
 
   const list = (anchor) => (
-    <Box
-      sx={{ width: anchor === "top" || anchor === "bottom" ? "auto" : 250 }}
-      role="presentation"
-      onClick={toggleDrawer(anchor, false)}
-      onKeyDown={toggleDrawer(anchor, false)}
-    >
-      <List>
-        <ListItem key="Send email" disablePadding>
-          <ListItemButton component={Link} to="/sendEmail">
-            <ListItemIcon>
-              <MailIcon />
-            </ListItemIcon>
-            <ListItemText primary="שלח אימייל למשתמש " />
-          </ListItemButton>
-        </ListItem>
-      </List>
-      <Divider />
-      <List>
-        {links.map((link, index) => (
-          <ListItem key={link.text} disablePadding>
+  <Box
+    sx={{ width: anchor === "top" || anchor === "bottom" ? "auto" : 250 }}
+    role="presentation"
+    onClick={toggleDrawer(anchor, false)}
+    onKeyDown={toggleDrawer(anchor, false)}
+  >
+    <List>
+      {links.map((link, index) => (
+        <React.Fragment key={link.text}>
+          <ListItem disablePadding>
             <ListItemButton component={Link} to={link.to}>
-              <ListItemIcon>
-                <AccountBoxIcon />
-                <AddTaskIcon />
-              </ListItemIcon>
+              {index === 0 && (
+                <ListItemIcon>
+                  <AccountBoxIcon />
+                </ListItemIcon>
+              )}
+              {index === 1 && (
+                <ListItemIcon>
+                  <AddTaskIcon />
+                </ListItemIcon>
+              )}
+              {index === 2 && (
+                <ListItemIcon>
+                  <HistoryEduIcon />
+                </ListItemIcon>
+              )}
+              {index === 3 && (
+                <ListItemIcon>
+                    <MailIcon />
+                </ListItemIcon>
+              )}
               <ListItemText primary={link.text} />
             </ListItemButton>
           </ListItem>
-        ))}
-      </List>
-    </Box>
-  );
-
+          {index < links.length - 1 && <Divider />}
+        </React.Fragment>
+      ))}
+    </List>
+  </Box>
+);
   /// רינדור הקומפוננטה
 
   return (

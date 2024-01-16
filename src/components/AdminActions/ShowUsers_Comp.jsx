@@ -47,8 +47,8 @@ function ShowUsers() {
   /// רינדור הקומפוננטה
 
   return (
-    <>
-      <h1 className="headOfUsers"> Users: </h1>
+    <div style={{ maxWidth: '90%', margin: '0 auto'}}>
+      <h1 className="headOfUsers" > Users: </h1>
       <div style={{ height: 400, width: "100%" }}>
         <DataGrid
           rows={users}
@@ -58,7 +58,7 @@ function ShowUsers() {
           key="users_key"
         />
       </div>
-    </>
+    </div>
   );
 }
 

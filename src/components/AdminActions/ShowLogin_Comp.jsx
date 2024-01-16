@@ -60,7 +60,7 @@ function ShowLogs() {
   ///רינדור הקומפוננטה
 
   return (
-    <>
+    <div style={{ maxWidth: '90%', margin: '0 auto'}}>
       <h1 className="headOfLogin"> Login: </h1>
       <div style={{ height: 500, width: "100%" }}>
         <DataGrid
@@ -71,7 +71,7 @@ function ShowLogs() {
           key="logs_key"
         />
       </div>
-    </>
+    </div>
   );
 }
 

@@ -13,14 +13,17 @@ background-color: rgb(255, 252, 252);
 .sign-in {
   animation: slideInFromTop 1.5s ease-out;
   position: absolute;
+  z-index: +5;
 }
 .log-in{
   animation: slideInFromTop 1.5s ease-out; 
   position: absolute;
+  z-index: +5;
 }
 .admin{ 
   animation: slideInFromTop 1.5s ease-out; 
   position: absolute;
+  z-index: +5;
 }
 
 @keyframes slideInFromTop {
@@ -71,6 +74,12 @@ background-color: rgb(255, 252, 252);
   .text-editor-rtl .ql-editor {
     direction: rtl;
     text-align: right; 
+  }
+  .AppBar {
+   z-index: +10;
+  }
+  .UserButton{
+    color: rgb(64, 29, 190);
   }
 
 
