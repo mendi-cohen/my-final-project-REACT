@@ -7,7 +7,7 @@ import {
   ThemeProvider,
   createTheme,
   Typography,
-} from "@material-ui/core/";
+} from "@mui/material";
 import { Snackbar } from "@mui/material";
 import Alert from "@mui/material/Alert";
 

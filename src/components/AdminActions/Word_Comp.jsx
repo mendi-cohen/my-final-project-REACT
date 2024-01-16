@@ -2,11 +2,11 @@ import { format } from 'date-fns-tz';
 import React, { useState } from "react";
 import ReactQuill from "react-quill";
 import "react-quill/dist/quill.snow.css";
-import { Button } from "@material-ui/core";
+import { Button } from "@mui/material";
 import SelectText from "../Lyout_Comp/Selection_Comp";
 import { Snackbar } from "@mui/material";
 import Alert from "@mui/material/Alert";
-import { ThemeProvider, createTheme } from "@material-ui/core/";
+import { ThemeProvider, createTheme } from "@mui/material/";
 import { he } from 'date-fns/locale';
 
 const theme = createTheme({

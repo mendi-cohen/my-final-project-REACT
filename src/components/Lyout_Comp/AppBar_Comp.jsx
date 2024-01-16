@@ -17,7 +17,7 @@ import { Button, Alert as MuiAlert } from "@mui/material";
 import { Snackbar } from "@mui/material";
 import Login from "../Connect_Comp/Login_Comp";
 import SignIn from "../Connect_Comp/SignIn_Comp";
-import { createTheme, ThemeProvider } from "@material-ui/core/";
+import { createTheme, ThemeProvider } from "@mui/material";
 
 ///עיצוב
 
