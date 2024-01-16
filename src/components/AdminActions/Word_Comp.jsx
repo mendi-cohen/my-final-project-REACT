@@ -6,7 +6,7 @@ import SelectText from "../Lyout_Comp/Selection_Comp";
 import { Snackbar } from "@mui/material";
 import Alert from "@mui/material/Alert";
 import { ThemeProvider, createTheme } from "@mui/material/";
-import { he } from 'date-fns/locale';
+
 
 const theme = createTheme({
   palette: {},
@@ -21,7 +21,7 @@ const WordFile = () => {
   const [openSuccess, setOpenSuccess] = useState(false);
   const [openError, setOpenError] = useState(false);
   const date = new Date();
-  // const formattedDate = format(date, 'dd/MM/yyyy', { locale: he });
+
 
 
   const handleSuccessClose = () => {
