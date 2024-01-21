@@ -21,6 +21,7 @@ const WordFile = () => {
   const [openSuccess, setOpenSuccess] = useState(false);
   const [openError, setOpenError] = useState(false);
   const date = new Date();
+  const time= new Date();
 
 
 
@@ -42,12 +43,12 @@ const WordFile = () => {
 
   const SaveToDatabase = async () => {
     try {
-      const response = await fetch(`${process.env.REACT_APP_HOST_API}/forms/articles`, {
+      const response = await fetch(`${process.env.REACT_APP_HOST_API}/Articels/sendArticel`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({ title, art_value, date }),
+        body: JSON.stringify({ title, art_value, date,time }),
       });
 
       if (response.ok) {

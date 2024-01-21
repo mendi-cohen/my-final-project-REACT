@@ -83,3 +83,30 @@ background-color: rgb(255, 252, 252);
   }
 
 
+/* בקובץ CSS */
+
+/* סגנון למספרים */
+.ql-editor ol {
+  counter-reset: item;
+  margin: 0;
+  padding: 0;
+}
+
+.ql-editor li {
+  display: block;
+  counter-increment: item;
+  margin-bottom: 0.5em;
+  margin-left: 2em;
+}
+
+.ql-editor li:before {
+  content: counters(item, ".") ". ";
+  display: inline-block;
+  width: 2em;
+  margin-left: -2em;
+}
+
+/* סגנון לתיקוף מעט את הרווח בין המספרים לטקסט */
+.ql-editor p {
+  margin-left: 0;
+}
