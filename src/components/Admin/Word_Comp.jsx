@@ -18,6 +18,7 @@ const theme = createTheme({
 const WordFile = () => {
   const [art_value, setEditorValue] = useState("");
   const [title, setTitle] = useState("");
+  const [second_title	 , setSecondTitle]= useState("");
   const [openSuccess, setOpenSuccess] = useState(false);
   const [openError, setOpenError] = useState(false);
   const date = new Date();
@@ -34,12 +35,15 @@ const WordFile = () => {
   };
 
   const handleChange = (value) => {
-    setEditorValue(value);
+    setEditorValue(value.toString());
   };
 
   const handleSubjectChange = (selectedSubject) => {
     setTitle(selectedSubject);
   };
+  const Second = (value)=>{
+    setSecondTitle(value.target.value);
+  }
 
   const SaveToDatabase = async () => {
     try {
@@ -48,7 +52,7 @@ const WordFile = () => {
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({ title, art_value, date,time }),
+        body: JSON.stringify({ title,second_title	, art_value, date,time }),
       });
 
       if (response.ok) {
@@ -73,6 +77,7 @@ const WordFile = () => {
 
 
         <div className="text-editor-rtl" style={{ maxWidth: '90%', margin: '0 auto' ,height: '150px'  }}>
+          <input type="text" value={second_title	} onChange={Second} />
           <ReactQuill theme="snow" value={art_value} onChange={handleChange} />
         </div>
 

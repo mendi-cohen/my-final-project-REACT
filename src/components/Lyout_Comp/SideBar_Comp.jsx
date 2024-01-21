@@ -16,7 +16,7 @@ import AccountBoxIcon from "@mui/icons-material/AccountBox";
 import HistoryEduIcon from '@mui/icons-material/HistoryEdu';
 import { Link } from "react-router-dom";
 import EnterCard from "./EnterCard_Comp";
-import Admin from "../Connect_Comp/Admin_Comp";
+import Admin from "../Connection/Admin_Comp";
 
 export default function SideBar() {
   /// סטייטים

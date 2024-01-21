@@ -9,7 +9,7 @@ function ArticleList({ articles }) {
     paragraphs.forEach(paragraph => {
       const underlinedTexts = paragraph.querySelectorAll('u');
       underlinedTexts.forEach(underlinedText => {
-        underlinedText.style.textDecoration = 'underline'; // הוספת קו תחתון
+        underlinedText.style.textDecoration = 'underline';
       });
     });
 
@@ -18,13 +18,12 @@ function ArticleList({ articles }) {
 
   return (
     <div style={{ direction: 'rtl'}}>
-      <h2>מאמרים :</h2>
+      
    
         {articles.map((article , index) => (
             <div key={article.id}style={{ marginBottom: '20px', borderTop: index > 0 ? '1px solid #ccc' : 'none' }}>
-              <p>Date: {new Date(article.date).toLocaleDateString("en-GB")}</p>
-              <h6>{article.time}</h6>
-            <h3>{article.title}</h3>
+              <p>תאריך עליית המאמר : {new Date(article.date).toLocaleDateString("en-GB")}</p>
+            <h3>{article.second_title}</h3>
             <div dangerouslySetInnerHTML={{ __html: parseHTMLString(article.art_value) }} />
             
           </div>
