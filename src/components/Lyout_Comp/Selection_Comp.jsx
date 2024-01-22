@@ -62,7 +62,6 @@ const SelectText = ({ onSelect }) => {
           SelectProps={{
             native: true,
           }}
-          helperText="בחר נושא בבקשה"
           variant="filled"
           value={selectedValue}
           onChange={handleSelectChange}
