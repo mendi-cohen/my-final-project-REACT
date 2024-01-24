@@ -1,51 +1,33 @@
-import React, { useState, useEffect } from 'react';
-import { motion, useAnimation } from 'framer-motion';
+import React from 'react';
+import TextField from '@mui/material/TextField';
+import SelectQuestion from './Selection_2';
+import Button from '@mui/material/Button';
+import Box from '@mui/material/Box';
+import CheckBox from './ChekBox'
 
 export default function SendQuestion() {
-  const [isOpened, setIsOpened] = useState(false);
-  const controls = useAnimation();
 
-  useEffect(() => {
-    // כאשר הקומפוננטה נטענת, הפעל את האנימציה
-    controls.start({ x: isOpened ? 0 : '-100%' });
-  }, [isOpened, controls]);
-
-  const handleScroll = () => {
-    // הפעל פעולה בהתאם לגלילה
-    if (window.scrollY > 100) {
-      setIsOpened(true);
-    } else {
-      setIsOpened(false);
-    }
-  };
-
-  useEffect(() => {
-    // הוסף את האזנה לאירוע הגלילה
-    window.addEventListener('scroll', handleScroll);
-
-    // הסר את האזנה בעת יציאה מהדף
-    return () => {
-      window.removeEventListener('scroll', handleScroll);
-    };
-  }, []);
+  function Selected() {
+    console.log("Selected");
+  }
 
   return (
-    <motion.div
-      style={{
-        position: 'fixed',
-        top: 0,
-        left: 0,
-        width: '100%',
-        height: '100%',
-        background: 'white',
-        zIndex: 1000,
-        overflow: 'hidden',
-      }}
-      initial={{ x: '-100%' }}
-      animate={controls}
-      transition={{ duration: 1 }}
-    >
-      <h1>World!</h1>
-    </motion.div>
+    <Box className="megillah-container" sx={{ textAlign: 'center' }}>
+      <h1> שלום לך מה שאלתך ? </h1>
+      <SelectQuestion onSelect={Selected}/>
+      <TextField
+        label="הכנס את שאלתך בבקשה"
+        variant="filled"
+        fullWidth
+        margin="normal"
+        multiline
+        rows={6} 
+        maxRows={20} 
+      />
+
+      <div><CheckBox/></div>
+
+      <Button variant="contained" size='large'> שלח שאלתך  </Button>
+    </Box>
   );
-}
+};

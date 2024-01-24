@@ -1,6 +1,7 @@
 import React from 'react';
 import MyRouter from './Routes/Router';
-import './Css/Home.css'
+import './Css/Home.css';
+import './Css/Megillah.css';
 
 
 function App() {

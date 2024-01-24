@@ -1,0 +1,32 @@
+/* MegillahComponent.css */
+
+.megillah-container {
+  position: relative;
+  top: 5%;
+  left: 20%;
+  width: 500px;
+  height: 0; /* הגדר את הגובה ל-0 בתחילה */
+  background-color: antiquewhite;
+  border: 10px solid brown;
+  border-radius: 20px;
+  overflow: hidden;
+  padding: 20px;
+  transform-origin: top center;
+  animation: rollIn 1.5s ease-in-out forwards;
+  direction: rtl;
+  text-align: right;  /* עכשיו עם התנועה למעלה ואז השהייה בסיומה */
+}
+
+.megillah-content {
+  font-size: 20px;
+  text-align: center;
+}
+
+@keyframes rollIn {
+  0% {
+    height: 0;
+  }
+  100% {
+    height:600px; 
+  }
+}
