@@ -23,7 +23,7 @@ const ArtMenu = () => {
     { text: 'פרשת שבוע', to: '/ArticleMenu/GetParsha',width:'20%', color: 'black', backgroundImage: 'https://www.layeledv.co.il/images/itempics/3847_large.jpg', hoverColor: '#1565C0' },
     { text: 'הלכה', to: '/ArticleMenu/GetHalacha',width:'20%', color: 'black', backgroundImage: 'https://img.lovepik.com/free-png/20211103/lovepik-learning-english-books-illustration-png-image_400244643_wh1200.png', hoverColor: '#D32F2F' },
     { text: 'עינייני דיומא', to: '/ArticleMenu/GetTheDayTask',width:'20%', color: 'black', backgroundImage: 'https://www.gadgetshop.co.il/cdn/shop/products/fridge-board-calendar-b2.jpg?v=1634836105&width=720', hoverColor: '#1565C0' },
-    { text: 'השקפה', to: '/ArticleMenu/GetHashkafa',width:'20%', color: 'white', backgroundImage: 'https://lh3.googleusercontent.com/proxy/4BXsWWs4-dXtvl1HQ15LfH6mbBPgkMbZaGWXudWOBobR2CY8m-dvTXzhzAH7d5Lm9qpFiIUAZn6u7_dLWN3hKRUHmIfKfS3gq8b92Q', hoverColor: '#D32F2F' },
+    { text: 'השקפה', to: '/ArticleMenu/GetHashkafa',width:'20%', color: 'white', backgroundImage: 'https://winners-auctions.com/wp-content/uploads/2021/06/001-4713.jpg', hoverColor: '#D32F2F' },
   ];
 
   const handleMouseEnter = (index) => {

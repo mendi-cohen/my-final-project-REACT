@@ -6,6 +6,7 @@ import EmailForm from '../components/Admin/SendEmail_Comp';
 import WordFile from '../components/Admin/Word_Comp';
 import GetArticle from '../components/Lyout_Comp/article/GetArticle';
 import ArticleMenu from '../components/Lyout_Comp/article/ArticleMenu';
+import SendQuestion from '../components/Lyout_Comp/Questions/SendQuestion';
 
 
 
@@ -28,6 +29,10 @@ const MyRouter = () => {
             <Route path="ArticleMenu/GetTheDayTask" element={<GetArticle Type = {'ענייני דיומא'} headerOfArt={"מאמרי ענייני היום"}/>}/>
             <Route path="ArticleMenu/GetHashkafa" element={<GetArticle Type = {'השקפה'} headerOfArt={" מאמרי השקפה" }/>}/>
             {/*  */}
+            
+            {/* איזור השאלות בקוד */}
+            <Route path="questionsMenu" element={<SendQuestion/>}/>
+
 
         </Route>
       </Routes>
