@@ -37,7 +37,7 @@ const ArtMenu = () => {
   };
 
   return (
-    <>
+    <div >
       <h1> ? באיזה נושא תרצה לקרוא </h1>
       <div style={{ display: 'flex', justifyContent: 'center', flexWrap:'wrap'}}>
         {links.map((link, index) => (
@@ -82,7 +82,7 @@ const ArtMenu = () => {
           </Card>
         ))}
       </div>
-    </>
+    </div>
   );
 };
 

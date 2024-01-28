@@ -3,7 +3,7 @@ import { Outlet,   } from "react-router-dom";
 import MenuAppBar from "../components/Lyout_Comp/AppBar_Comp";
 import { ThemeProvider } from '@mui/material/styles';
 import Theme from '../components/Lyout_Comp/Theme_Comp'; 
-import SideBar from '../components/Lyout_Comp/SideBar_Comp';
+import SideBar from '../components/Admin/SideBar_Comp';
 import UsersBar from "../components/Lyout_Comp/UsersBar_Comp";
 
 

@@ -15,8 +15,9 @@ import AddTaskIcon from "@mui/icons-material/AddTask";
 import AccountBoxIcon from "@mui/icons-material/AccountBox";
 import HistoryEduIcon from '@mui/icons-material/HistoryEdu';
 import { Link } from "react-router-dom";
-import EnterCard from "./EnterCard_Comp";
+import EnterCard from "../Lyout_Comp/EnterCard_Comp";
 import Admin from "../Connection/Admin_Comp";
+import HelpCenterIcon from '@mui/icons-material/HelpCenter';
 
 export default function SideBar() {
   /// סטייטים
@@ -41,6 +42,8 @@ export default function SideBar() {
     { text: "כל החיבורים", to: "/allLogin" },
     { text: "כתיבת מאמרים", to: "/writeArticel" },
     { text: " שליחת אימייל", to: "/sendEmail" },
+    { text: " שאלות הגולשים ", to: "/enswerToUsers" },
+    { text: "  שליחת וואצאפ ", to: "/sendWhatsApp" },
   ];
 
   const list = (anchor) => (
@@ -73,6 +76,16 @@ export default function SideBar() {
               {index === 3 && (
                 <ListItemIcon>
                     <MailIcon />
+                </ListItemIcon>
+              )}
+              {index === 4 && (
+                <ListItemIcon>
+                    <HelpCenterIcon/>
+                </ListItemIcon>
+              )}
+              {index === 5 && (
+                <ListItemIcon>
+                    <HelpCenterIcon/>
                 </ListItemIcon>
               )}
               <ListItemText primary={link.text} />

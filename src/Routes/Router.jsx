@@ -7,6 +7,8 @@ import WordFile from '../components/Admin/Word_Comp';
 import GetArticle from '../components/Lyout_Comp/article/GetArticle';
 import ArticleMenu from '../components/Lyout_Comp/article/ArticleMenu';
 import SendQuestion from '../components/Lyout_Comp/Questions/SendQuestion';
+import Enswer from '../components/Admin/Enswer';
+import WhatsApp  from '../components/Admin/WhatsApp';
 
 
 
@@ -20,6 +22,9 @@ const MyRouter = () => {
             <Route path="allLogin" element={<ShowLogs/>}/>
             <Route path="sendEmail" element={<EmailForm/>}/>
             <Route path="writeArticel" element={<WordFile/>}/>
+            <Route path="enswerToUsers" element={<Enswer/>}/>
+            <Route path="sendWhatsApp" element={<WhatsApp/>}/>
+
             {/*  */}
 
             {/* {איזור המאמרים בקוד} */}
@@ -32,6 +37,7 @@ const MyRouter = () => {
             
             {/* איזור השאלות בקוד */}
             <Route path="questionsMenu" element={<SendQuestion/>}/>
+            {/* שליחת וואצאפ */}
 
 
         </Route>

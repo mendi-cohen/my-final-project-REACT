@@ -1,12 +1,11 @@
 import React, { useState, useEffect, useCallback } from "react";
-import ArticleList from './ShowArt_Comp';
+import QuestionList from './ShowEnswer';
+export default function GetQuestion(props) {
+  const [Quest, setQuest] = useState([]);
 
-function GetArticle(props) {
-  const [Art, setArt] = useState([]);
-
-  const showArticles = useCallback(async () => {
+  const showQuestion = useCallback(async () => {
     try {
-      const response = await fetch(`${process.env.REACT_APP_HOST_API}/Articels/getOneType/${props.Type}`, {
+      const response = await fetch(`${process.env.REACT_APP_HOST_API}/question/GetQuestion`, {
         method: "GET",
         headers: {
           "Content-Type": "application/json",
@@ -15,10 +14,10 @@ function GetArticle(props) {
 
       if (response.ok) {
         const data = await response.json();
-        if (data && data.oneType && data.oneType.length > 0) {
-          setArt(data.oneType);
+        if (data && data.getTheQuestion && data.getTheQuestion.length > 0) {
+          setQuest(data.getTheQuestion);
         } else {
-          console.log("No data in the response");
+          console.log("No  data in the response");
         }
       } else {
         console.log("Server response is not okay");
@@ -26,18 +25,16 @@ function GetArticle(props) {
     } catch (error) {
       console.log("Error while fetching data from the server", error);
     }
-  }, [props.Type]);
+  }, []);
 
   useEffect(() => {
-    showArticles();
-  }, [showArticles]);
+    showQuestion();
+  }, [showQuestion]);
 
   return (
     <>
       <h2>{props.headerOfArt}</h2>
-      <ArticleList articles={Art} />
+      <QuestionList questions={Quest} />
     </>
   );
 }
-
-export default GetArticle;
