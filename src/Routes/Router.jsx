@@ -20,11 +20,10 @@ const MyRouter = () => {
           {/* איזור המנהל */}
           <Route path="allUsers" element={<ShowUsers/>}/>
             <Route path="allLogin" element={<ShowLogs/>}/>
-            <Route path="sendEmail" element={<EmailForm/>}/>
             <Route path="writeArticel" element={<WordFile/>}/>
             <Route path="enswerToUsers" element={<Enswer/>}/>
+            <Route path="sendEmail" element={<EmailForm/>}/>
             <Route path="sendWhatsApp" element={<WhatsApp/>}/>
-
             {/*  */}
 
             {/* {איזור המאמרים בקוד} */}

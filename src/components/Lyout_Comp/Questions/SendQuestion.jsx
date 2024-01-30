@@ -3,18 +3,39 @@ import TextField from '@mui/material/TextField';
 import SelectQuestion from './Selection_2';
 import Button from '@mui/material/Button';
 import Box from '@mui/material/Box';
-import CheckBox from './ChekBox';
+import CheckBox from './ChekBox';  
 import { Snackbar } from "@mui/material";
 import Alert from "@mui/material/Alert";
 
-export default function SendQuestion() {
+const SendQuestion = () => {
   const [openSuccess, setOpenSuccess] = useState(false);
   const [openError, setOpenError] = useState(false);
   const [Question_value, setQuestion] = useState('');
   const [title, setTitle] = useState('');
   const [chekbox, setChekbox] = useState('');
+  const [additionalInfo, setAdditionalInfo] = useState('');
   const date = new Date();
   const time = new Date();
+
+  const sendWhatsAppMessage = async () => {
+    try {
+      const response = await fetch(`${process.env.REACT_APP_HOST_API}/whatsapp/send-whatsApp`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ message: ' הודעה מהאתר:  מחכה לך שאלה באתר'  }),
+      });
+
+      if (!response.ok) {
+        console.error('Failed to send WhatsApp message');
+      }
+    } catch (error) {
+      console.error('Error sending WhatsApp message:', error.message);
+    }
+  };
+
+
 
   const handleChange = (value) => {
     setQuestion(value.target.value);
@@ -32,10 +53,9 @@ export default function SendQuestion() {
     setTitle(selectedSubject);
   };
 
-  const handleCheckboxChange = (selectedOption) => {
+  const handleCheckboxChange = (selectedOption, additionalInfo) => {
     setChekbox(selectedOption);
-    
-    
+    setAdditionalInfo(additionalInfo);
   };
 
   const SaveToDatabase = async () => {
@@ -45,13 +65,18 @@ export default function SendQuestion() {
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({ title, Question_value, chekbox, date, time }),
+        body: JSON.stringify({ title, Question_value, chekbox, additionalInfo, date, time }),
       });
 
       if (response.ok) {
         setOpenSuccess(true);
+        sendWhatsAppMessage()
+   
+       
+
       } else {
         setOpenError(true);
+        console.log(additionalInfo);
       }
     } catch (error) {
       setOpenError(true);
@@ -69,7 +94,6 @@ export default function SendQuestion() {
         fullWidth
         margin="normal"
         multiline
-
         value={Question_value}
         onChange={handleChange}
         sx={{ direction: 'rtl' }}
@@ -78,6 +102,7 @@ export default function SendQuestion() {
 
       <div>
         <CheckBox onSelectionChange={handleCheckboxChange} />
+        
       </div>
 
       <Button  type="submit" variant="contained" size='large' onClick={SaveToDatabase}> שלח שאלתך  </Button>
@@ -116,3 +141,5 @@ export default function SendQuestion() {
     </Box>
   );
 };
+
+export default SendQuestion;

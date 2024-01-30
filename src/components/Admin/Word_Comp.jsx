@@ -47,7 +47,7 @@ const WordFile = () => {
 
   const SaveToDatabase = async () => {
     try {
-      const response = await fetch(`${process.env.REACT_APP_HOST_API}/Articels/sendArticel`, {
+      const response = await fetch(`${process.env.REACT_APP_HOST_API}/Articles/sendArticle`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

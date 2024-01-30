@@ -6,17 +6,18 @@ function GetArticle(props) {
 
   const showArticles = useCallback(async () => {
     try {
-      const response = await fetch(`${process.env.REACT_APP_HOST_API}/Articels/getOneType/${props.Type}`, {
+      const response = await fetch(`${process.env.REACT_APP_HOST_API}/Articles/getOneType/${props.Type}`, {
         method: "GET",
         headers: {
           "Content-Type": "application/json",
         },
       });
-
+  
       if (response.ok) {
         const data = await response.json();
-        if (data && data.oneType && data.oneType.length > 0) {
-          setArt(data.oneType);
+  
+        if (data && data.oneType) {
+          setArt([data.oneType]);
         } else {
           console.log("No data in the response");
         }
@@ -31,6 +32,8 @@ function GetArticle(props) {
   useEffect(() => {
     showArticles();
   }, [showArticles]);
+
+ 
 
   return (
     <>

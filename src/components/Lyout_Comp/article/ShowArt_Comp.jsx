@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Card, CardContent, Typography } from "@mui/material";
 import { useSpring, animated } from "react-spring";
 
+
 function ArticleCard({ article }) {
   const [showContent, setShowContent] = useState(false);
 

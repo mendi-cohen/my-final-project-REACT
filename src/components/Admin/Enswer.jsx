@@ -5,7 +5,7 @@ export default function GetQuestion(props) {
 
   const showQuestion = useCallback(async () => {
     try {
-      const response = await fetch(`${process.env.REACT_APP_HOST_API}/question/GetQuestion`, {
+      const response = await fetch(`${process.env.REACT_APP_HOST_API}/question/GetQuestions`, {
         method: "GET",
         headers: {
           "Content-Type": "application/json",
@@ -14,6 +14,7 @@ export default function GetQuestion(props) {
 
       if (response.ok) {
         const data = await response.json();
+        
         if (data && data.getTheQuestion && data.getTheQuestion.length > 0) {
           setQuest(data.getTheQuestion);
         } else {
