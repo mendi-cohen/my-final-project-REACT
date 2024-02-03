@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import TextField from '@mui/material/TextField';
-import SelectQuestion from './Selection_2';
+import SelectQuestion from './Selection_question';
 import Button from '@mui/material/Button';
 import Box from '@mui/material/Box';
 import CheckBox from './ChekBox';  

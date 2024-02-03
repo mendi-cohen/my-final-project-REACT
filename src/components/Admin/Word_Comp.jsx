@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import ReactQuill from "react-quill";
 import "react-quill/dist/quill.snow.css";
 import { Button } from "@mui/material";
-import SelectText from "../Lyout_Comp/Selection_Comp";
+import SelectText from "./Selection_ArtTitle";
 import { Snackbar } from "@mui/material";
 import Alert from "@mui/material/Alert";
 import { ThemeProvider, createTheme } from "@mui/material/";
