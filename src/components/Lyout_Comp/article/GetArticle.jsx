@@ -16,8 +16,8 @@ function GetArticle(props) {
       if (response.ok) {
         const data = await response.json();
   
-        if (data && data.oneType && data.oneType.length > 0) {
-          setArt(data.oneType);
+        if (data && data.oneType) {
+          setArt([data.oneType]);
         } else {
           console.log("No data in the response");
         }
