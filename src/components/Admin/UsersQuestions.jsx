@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useCallback } from "react";
-import QuestionList from './ShowEnswer';
+import QuestionList from './ShowQuestions';
+
 export default function GetQuestion(props) {
   const [Quest, setQuest] = useState([]);
 

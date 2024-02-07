@@ -17,7 +17,7 @@ function GetArticle(props) {
         const data = await response.json();
   
         if (data && data.oneType) {
-          setArt(data.oneType); 
+          setArt(data.oneType);
         } else {
           console.log("No data in the response");
         }
@@ -33,10 +33,14 @@ function GetArticle(props) {
     showArticles();
   }, [showArticles]);
 
+ 
+
   return (
     <>
       <h2>{props.headerOfArt}</h2>
-      <ArticleList articles={Art}/> 
+     
+      <ArticleList articles={Art}/>
+      
     </>
   );
 }
