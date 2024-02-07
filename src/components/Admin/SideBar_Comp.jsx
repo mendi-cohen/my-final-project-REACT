@@ -35,6 +35,7 @@ export default function SideBar() {
 
   const toggleDrawer = (anchor, open) => () => {
     setState({ ...state, [anchor]: open });
+    chackAdmins(false);
   };
 
   const links = [

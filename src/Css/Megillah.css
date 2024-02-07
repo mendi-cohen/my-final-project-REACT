@@ -3,7 +3,7 @@
 .megillah-container {
   position: relative;
   top: 5%;
-  left: 20%;
+  left: 5%;
   width: 50%;
   height: 0; /* הגדר את הגובה ל-0 בתחילה */
   background-color: antiquewhite;

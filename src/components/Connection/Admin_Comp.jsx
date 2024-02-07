@@ -46,7 +46,6 @@ function Admin(props) {
     if (password === EnvPassword) {
       setOpenSuccess(true);
       props.success();
-      setpassword("");
     } else {
       setOpenError(true);
     }
