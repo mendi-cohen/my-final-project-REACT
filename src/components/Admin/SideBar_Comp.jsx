@@ -45,6 +45,7 @@ export default function SideBar() {
     { text: " שליחת אימייל", to: "/sendEmail" },
     { text: " שאלות הגולשים ", to: "/enswerToUsers" },
     { text: "  שליחת וואצאפ ", to: "/sendWhatsApp" },
+    { text: " bbbbbbb", to: "/sendEnswer" },
   ];
 
   const list = (anchor) => (

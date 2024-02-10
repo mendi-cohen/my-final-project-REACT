@@ -9,6 +9,7 @@ import ArticleMenu from '../components/Lyout_Comp/article/ArticleMenu';
 import SendQuestion from '../components/Lyout_Comp/Questions/SendQuestion';
 import UserQuest from '../components/Admin/UsersQuestions';
 import WhatsApp  from '../components/Admin/WhatsApp';
+import EnswerToUser from '../components/Admin/EnswerToUser';
 
 
 
@@ -24,6 +25,7 @@ const MyRouter = () => {
             <Route path="enswerToUsers" element={<UserQuest/>}/>
             <Route path="sendEmail" element={<EmailForm/>}/>
             <Route path="sendWhatsApp" element={<WhatsApp/>}/>
+            <Route path="sendEnswer" element={<EnswerToUser/>}/>
             {/*  */}
 
             {/* {איזור המאמרים בקוד} */}
