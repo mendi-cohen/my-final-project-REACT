@@ -7,6 +7,7 @@ import axios from 'axios';
 export default function EnswerToUser({ questionData }) {
   const [Enswer_value, setEnswer] = useState('');
   const [submitted, setSubmitted] = useState(false);
+  const Question_value = questionData.Question_value;
 
   const handleChange = (event) => {
     setEnswer(event.target.value);
@@ -22,22 +23,20 @@ export default function EnswerToUser({ questionData }) {
             "Content-Type": "application/json",
           },
           body: JSON.stringify({ 
-            Enswer_value: Enswer_value, 
-            Question_value: questionData.Question_value,
+          Enswer_value, 
+          Question_value,
           }),
 
         });
   
         if (response.ok) {
-          handleSubmit();
-          alert(' מרובה התשובה נשלחה בהצלחה' );
           console.log("ok response");
         } else {
-        alert(' מרובה התשובה לא נ שלחס בהצלחה' );
+        alert('!!! שגיאה ' );
 
         }
       } catch (error) {
-        alert(' מרובה התשובה לא נ שלחס בהצלחה' );
+       
 
         console.log(error.message);
       }
@@ -63,6 +62,7 @@ export default function EnswerToUser({ questionData }) {
         if (response.ok) {
           alert('התשובה נשלחה בהצלחה');
           setEnswer('');
+          sendTheEnswer();
           setSubmitted(true);
         } else {
           alert('שגיאה בשליחת התשובה.');
@@ -80,6 +80,7 @@ export default function EnswerToUser({ questionData }) {
         });
         alert('vהאימייל נשלחה בהצלחה');
         setEnswer('');
+        sendTheEnswer();
         setSubmitted(true);
       } catch (error) {
         console.error("Error sending email:", error);
@@ -93,7 +94,7 @@ export default function EnswerToUser({ questionData }) {
   
 
   return (
-    <form onSubmit={sendTheEnswer}>
+    <form onSubmit={handleSubmit}>
       <TextField
         label="תשובה"
         variant="outlined"
