@@ -7,7 +7,6 @@ import axios from 'axios';
 export default function EnswerToUser({ questionData }) {
   const [Enswer_value, setEnswer] = useState('');
   const [submitted, setSubmitted] = useState(false);
-  const date = new Date();
 
   const handleChange = (event) => {
     setEnswer(event.target.value);
@@ -25,18 +24,21 @@ export default function EnswerToUser({ questionData }) {
           body: JSON.stringify({ 
             Enswer_value: Enswer_value, 
             Question_value: questionData.Question_value,
-            date: date
           }),
 
         });
   
         if (response.ok) {
-          handleSubmit()
+          handleSubmit();
+          alert(' מרובה התשובה נשלחה בהצלחה' );
           console.log("ok response");
-          console.log(questionData);
         } else {
+        alert(' מרובה התשובה לא נ שלחס בהצלחה' );
+
         }
       } catch (error) {
+        alert(' מרובה התשובה לא נ שלחס בהצלחה' );
+
         console.log(error.message);
       }
     };
