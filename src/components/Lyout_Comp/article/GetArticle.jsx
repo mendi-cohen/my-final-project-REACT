@@ -2,7 +2,7 @@ import React, { useState, useEffect, useCallback } from "react";
 import ArticleList from './ShowArt_Comp';
 
 function GetArticle(props) {
-  const [Art, setArt] = useState([[]]);
+  const [Art, setArt] = useState([]);
 
   const showArticles = useCallback(async () => {
     try {
