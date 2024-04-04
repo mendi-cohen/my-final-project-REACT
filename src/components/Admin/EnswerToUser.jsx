@@ -78,7 +78,7 @@ export default function EnswerToUser({ questionData }) {
           toEmail: questionData.additionalInfo,
           messageBody: `${Enswer_value} : שלום לך זוהי תשובה מאתר רבנות יד רמב"ם  `, 
         });
-        alert('vהאימייל נשלחה בהצלחה');
+        alert('האימייל נשלחה בהצלחה');
         setEnswer('');
         sendTheEnswer();
         setSubmitted(true);
